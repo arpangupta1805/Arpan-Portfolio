@@ -27,7 +27,7 @@ const Education = () => {
         transition={{ duration: 0.8, delay: 0.5 }}
         className='flex flex-wrap justify-start '>
         {EDUCATIONS.map((education, index) => (
-            <div key={index} className="mb-8 flex-col flex lg:items-center border-[2px] border-neutral-950 rounded-xl p-3">
+            <div key={index} className="mb-8 flex-col flex lg:items-center border-[2px] border-neutral-950 rounded-x p-3">
                 <a target='_blank' href={education.link} className='cursor-pointer hover:underline'>
                   <motion.h1 
                       variants={Container(0)}
