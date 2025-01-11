@@ -28,15 +28,13 @@ const Education = () => {
         className='flex lg:flex-col gap-8 lg:flex-wrap justify-start max-h-[50vh] max-w-[95vw] scrollbar-hide overflow-scroll'>
         {EDUCATIONS.map((education, index) => (
             <div key={index} className="w-full md:w-[25rem] flex-col flex-wrap flex lg:items-center border-[2px] border-gray-600 rounded-2xl p-3 ">
-                <a target='_blank' href={education.link} className='cursor-pointer hover:underline'>
-                  <motion.h1 
-                      variants={Container(0)}
-                      initial="hidden" // this is the initial state
-                      animate="visible" // this is the final state
-                      className="text-2xl font-thin text-wrap tracking-tight lg:mt-16" >{education.title}
-                  </motion.h1>
-                </a>
-                <a target='_blank' href="https://cs.iitgn.ac.in" className='cursor-pointer transition-all hover:underline'>
+                <motion.h1
+                    variants={Container(0)}
+                    initial="hidden" // this is the initial state
+                    animate="visible" // this is the final state
+                    onClick={() => window.open(education.link)} // this will open link in new tab
+                    className="text-2xl cursor-pointer hover:underline font-thin text-wrap tracking-tight lg:mt-16" >{education.title}
+                </motion.h1>
                 <motion.h3
                     variants={Container(0.5)}
                     initial="hidden"
@@ -44,7 +42,6 @@ const Education = () => {
                     className="my-1 ml-10 lg:ml-16 max-w-xl text-xl transition-all font-light tracking-tight">
                     {education.subtitle}
                 </motion.h3>
-                </a>
                 <motion.p
                     variants={Container(0.7)}
                     initial="hidden"
