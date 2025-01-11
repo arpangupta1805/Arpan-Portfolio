@@ -35,6 +35,7 @@ const Education = () => {
                     onClick={() => window.open(education.link)} // this will open link in new tab
                     className="text-2xl cursor-pointer hover:underline font-thin text-wrap tracking-tight lg:mt-16" >{education.title}
                 </motion.h1>
+        
                 <motion.h3
                     variants={Container(0.5)}
                     initial="hidden"

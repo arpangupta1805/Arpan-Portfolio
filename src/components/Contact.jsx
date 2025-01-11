@@ -22,7 +22,6 @@ const Contact = () => {
         >
           {CONTACT.email}
         </motion.p>
-        
         <motion.p
           whileInView={{ opacity: 1, x: 0 }}
           initial={{ opacity: 0, x: 100 }}
