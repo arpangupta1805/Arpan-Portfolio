@@ -2,6 +2,7 @@ import "./App.css";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Experience from "./components/Experience";
+import Education from "./components/Education";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Project from "./components/Project";
@@ -19,8 +20,8 @@ function App() {
         <div className="container mx-auto px-8">
           <Navbar></Navbar> {/* Navbar */}
           <Hero></Hero>
-
           <About></About>
+          <Education></Education>
           <Tech></Tech>
           {/* <Experience></Experience> */}
           <Project></Project>
