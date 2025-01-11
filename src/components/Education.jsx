@@ -12,7 +12,7 @@ const Container = (delay) => ({
 
 const Education = () => {
   return (
-    <div className="flex flex-col items-center lg:items-start">
+    <div className="flex flex-col items-center lg:items-start border-b border-neutral-900 pb-4">
         <motion.span
             variants={Container(0.6)}
             initial="hidden"
