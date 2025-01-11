@@ -22,7 +22,7 @@ export const EDUCATIONS = [
     title: "Indian Institute of Technology, Gandhinagar",
     subtitle: "B.Tech in Computer Science and Engineering",
     year: "2024 - 2028",
-    link: "https://www.iitgn.ac.in/"
+    link: "https://cs.iitgn.ac.in/"
   }
 ]
 
