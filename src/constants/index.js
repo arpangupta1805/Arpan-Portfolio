@@ -1,3 +1,4 @@
+import { link } from "framer-motion/client";
 import project1 from "../assets/projects/project-1.jpg";
 import project2 from "../assets/projects/project-2.jpg";
 import project3 from "../assets/projects/project-3.jpg";
@@ -21,6 +22,7 @@ export const EDUCATIONS = [
     title: "Indian Institute of Technology, Gandhinagar",
     subtitle: "B.Tech in Computer Science and Engineering",
     year: "2024 - 2028",
+    link: "https://www.iitgn.ac.in/"
   }
 ]
 
