@@ -1,5 +1,6 @@
 import React from 'react'
 import { EDUCATIONS } from '../constants'
+import { motion } from "framer-motion";
 
 const Container = (delay) => ({
     hidden: { x: -400, opacity: 0 },
@@ -36,15 +37,15 @@ const Education = () => {
                     variants={Container(0.5)}
                     initial="hidden"
                     animate="visible"
-                    className="my-2 max-w-xl text-2xl py-6 font-light tracking-tight">
+                    className="my-4 max-w-xl text-2xl py-6 font-light tracking-tight">
                     {education.subtitle}
                 </motion.h3>
                 <motion.p
                     variants={Container(0.7)}
                     initial="hidden"
                     animate="visible"
-                    className="my-2 text-xl max-w-xl py-6 font-light tracking-tight">
-                    {education.description}
+                    className="my-4 text-3xl max-w-xl py-6 font-light tracking-tight">
+                    {education.year}
                 </motion.p>
             </div>
         ))}
