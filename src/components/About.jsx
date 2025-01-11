@@ -2,6 +2,7 @@ import React from "react";
 import about from "../assets/about1.jpg";
 import { ABOUT_TEXT } from "../constants";
 import { motion } from "framer-motion";
+
 const Container1 = (delay) => ({
   hidden: { x: -400, opacity: 0 },
   visible: {
@@ -37,9 +38,8 @@ const About = () => {
           whileInView={{ opacity: 1, x: 0 }}
           initial={{ opacity: 0, x: 100 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className=" w-full lg:w-1/2"
-        >
-          <div className="flex justify-center lg:justify-start">
+          className=" w-full lg:w-1/2">
+          <div className="flex flex-wrap justify-center lg:justify-start">
             <p className="my-2 max-w-xl py-6">{ABOUT_TEXT}</p>
           </div>
         </motion.div>

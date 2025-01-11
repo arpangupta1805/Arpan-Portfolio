@@ -15,6 +15,15 @@ export const ABOUT_TEXT = `I am a dedicated and versatile full stack developer w
 //     technologies: ["Ruby", "Rails", "PHP", "Sqlite"],
 //   },
 // ];
+
+export const EDUCATIONS = [
+  {
+    title: "Indian Institute of Technology, Gandhinagar",
+    subtitle: "B.Tech in Computer Science and Engineering",
+    year: "2024 - 2028",
+  }
+]
+
 export const PROJECTS = [
   {
     title: "Music-player",

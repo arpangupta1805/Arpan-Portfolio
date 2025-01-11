@@ -16,8 +16,7 @@ const Project = () => {
       <motion.div
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: 100 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-      >
+        transition={{ duration: 0.8, delay: 0.5 }}>
         {PROJECTS.map((project, index) => (
           <div key={index} className="mb-8 flex flex-wrap hover:scale-110 transition-all ease-out duration-500 lg:justify-center">
             <div className="w-full lg:w-1/4 cursor-pointer">
