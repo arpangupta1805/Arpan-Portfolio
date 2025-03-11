@@ -5,4 +5,15 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: '/Arpan-Portfolio',
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      onwarn(warning, warn) {
+        // Ignore certain warnings
+        if (warning.code === 'DYNAMIC_IMPORT_VARIABLES') {
+          return
+        }
+        warn(warning)
+      }
+    }
+  }
 })

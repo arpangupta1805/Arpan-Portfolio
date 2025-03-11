@@ -9,7 +9,7 @@ import { FaMoon, FaSun } from "react-icons/fa";
 const Navbar = ({ toggleTheme, isDarkMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const isHomePage = location.pathname === "/Arpan-Portfolio" || location.pathname === "/Arpan-Portfolio/";
+  const isHomePage = location.pathname === "/Arpan-Portfolio" || location.pathname === "/Arpan-Portfolio";
 
   const handleInstagram = () => {
     window.open("https://www.instagram.com/arpan5218/");
@@ -31,6 +31,7 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
     <nav 
       className={`sticky top-0 z-50 backdrop-blur-md mb-10 flex flex-col md:flex-row items-center justify-between py-4 px-6 md:px-10 shadow-md`}
       style={{ backgroundColor: 'var(--nav-bg)' }}
+      id="navbar"
     >
       <div className="flex w-full md:w-auto items-center justify-between">
         <div className="flex items-center justify-center gap-2">
@@ -87,63 +88,27 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
       <div className={`hidden md:flex items-center justify-center gap-6 text-lg`}>
         {isHomePage ? (
           <>
-            <Link 
-              to="about" 
-              smooth={true} 
-              duration={500} 
-              spy={true} 
-              activeClass="text-blue-500"
-              className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-              style={{ color: 'var(--text-primary)' }}
-            >
+            <Link to="about" smooth={true} duration={500} spy={true} activeClass="text-blue-500" className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`} style={{ color: 'var(--text-primary)' }}>
               About Me
             </Link>
-            
-            <Link 
-              to="education" 
-              smooth={true} 
-              duration={500} 
-              spy={true} 
-              activeClass="text-blue-500"
-              className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-              style={{ color: 'var(--text-primary)' }}
-            >
+            <Link to="education" smooth={true} duration={500} spy={true} activeClass="text-blue-500" className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`} style={{ color: 'var(--text-primary)' }}>
               Education
             </Link>
 
-            <Link 
-              to="projects" 
-              smooth={true} 
-              duration={500} 
-              spy={true}
-              activeClass="text-blue-500"
-              className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-              style={{ color: 'var(--text-primary)' }}
-            >
+            <Link to="projects" smooth={true} duration={500} spy={true} activeClass="text-blue-500" className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`} style={{ color: 'var(--text-primary)' }}>
               Projects
             </Link>
           </>
         ) : (
           <>
-            <NavLink 
-              to="/Arpan-Portfolio" 
-              className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-              style={{ color: 'var(--text-primary)' }}
-            >
+            <NavLink to="/Arpan-Portfolio" className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`} style={{ color: 'var(--text-primary)' }}>
               Home
             </NavLink>
-            <NavLink 
-              to="/Arpan-Portfolio/about" 
-              className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-              style={{ color: 'var(--text-primary)' }}
+            <NavLink  to="/Arpan-Portfolio/about"  className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`} style={{ color: 'var(--text-primary)' }}
             >
               About
             </NavLink>
-            <NavLink 
-              to="/Arpan-Portfolio/projects" 
-              className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-              style={{ color: 'var(--text-primary)' }}
-            >
+            <NavLink to="/Arpan-Portfolio/projects" className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}style={{ color: 'var(--text-primary)' }}>
               Projects
             </NavLink>
           </>
@@ -166,12 +131,11 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
             activeClass="text-blue-500"
             className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
             style={{ color: 'var(--text-primary)' }}
-          >
-            Contact
+          >Contact
           </Link>
         ) : (
           <NavLink 
-            to="/Arpan-Portfolio/about#contact" 
+            to="/Arpan-Portfolio/about" 
             className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
             style={{ color: 'var(--text-primary)' }}
           >
@@ -188,117 +152,108 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
       </div>
       
       {/* Mobile Navigation */}
-      <div 
-        className={`${isMenuOpen ? 'flex' : 'hidden'} md:hidden flex-col w-full mt-4 space-y-4`}
-        style={{ color: 'var(--text-primary)' }}
-      >
-        {isHomePage ? (
-          <>
-            <Link 
-              to="about" 
-              smooth={true} 
-              duration={500} 
-              spy={true} 
-              activeClass="text-blue-500"
-              className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About Me
-            </Link>
-            
-            <Link 
-              to="education" 
-              smooth={true} 
-              duration={500} 
-              spy={true} 
-              activeClass="text-blue-500"
-              className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Education
-            </Link>
+      <div className={`md:hidden w-full ${isMenuOpen ? 'block' : 'hidden'} mt-4`}>
+        <div className="flex flex-col items-center gap-4 py-2">
+          {isHomePage ? (
+            <>
+              <Link 
+                to="about" 
+                smooth={true} 
+                duration={500} 
+                spy={true} 
+                activeClass="text-blue-500"
+                className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
+                style={{ color: 'var(--text-primary)' }}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About Me
+              </Link>
+              
+              <Link 
+                to="education" 
+                smooth={true} 
+                duration={500} 
+                spy={true} 
+                activeClass="text-blue-500"
+                className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Education
+              </Link>
 
-            <Link 
-              to="projects" 
-              smooth={true} 
-              duration={500} 
-              spy={true}
-              activeClass="text-blue-500"
-              className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Projects
-            </Link>
-          </>
-        ) : (
-          <>
+              <Link 
+                to="projects" 
+                smooth={true} 
+                duration={500} 
+                spy={true}
+                activeClass="text-blue-500"
+                className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Projects
+              </Link>
+            </>
+          ) : (
             <NavLink 
               to="/Arpan-Portfolio" 
               className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
+              style={{ color: 'var(--text-primary)' }}
               onClick={() => setIsMenuOpen(false)}
             >
               Home
             </NavLink>
-            <NavLink 
-              to="/Arpan-Portfolio/about" 
-              className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About
-            </NavLink>
-            <NavLink 
-              to="/Arpan-Portfolio/projects" 
-              className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Projects
-            </NavLink>
-          </>
-        )}
-        
-        <NavLink 
-          to="/Arpan-Portfolio/resume" 
-          className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-          onClick={() => setIsMenuOpen(false)}
-        >
-          Resume
-        </NavLink>
-        
-        {isHomePage ? (
-          <Link 
-            to="contact" 
-            smooth={true} 
-            duration={500} 
-            spy={true}
-            activeClass="text-blue-500"
-            className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Contact
-          </Link>
-        ) : (
+          )}
+          
           <NavLink 
-            to="/Arpan-Portfolio/about#contact" 
-            className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
+            to="/Arpan-Portfolio/about" 
+            className={({ isActive }) => 
+              `cursor-pointer transition-all font-medium ${
+                isActive 
+                  ? 'text-blue-500' 
+                  : isDarkMode 
+                    ? 'hover:text-blue-300' 
+                    : 'hover:text-blue-600'
+              }`
+            }
+            style={{ color: 'var(--text-primary)' }}
             onClick={() => setIsMenuOpen(false)}
           >
-            Contact
+            About
           </NavLink>
-        )}
-        
-        <div className={`flex items-center justify-center gap-4 text-2xl pt-2 border-t ${isDarkMode ? 'border-neutral-800' : 'border-neutral-300'}`}>
-          <FaInstagram 
-            onClick={handleInstagram} 
-            className={`cursor-pointer hover:scale-110 transition-all ease-in-out ${isDarkMode ? 'text-neutral-300 hover:text-blue-300' : 'text-neutral-700 hover:text-blue-600'}`} 
-          />
-          <FaLinkedin 
-            onClick={handlelinkedin} 
-            className={`cursor-pointer hover:scale-110 transition-all ease-in-out ${isDarkMode ? 'text-neutral-300 hover:text-blue-300' : 'text-neutral-700 hover:text-blue-600'}`}
-          />
-          <FaGithub 
-            onClick={handleGithub} 
-            className={`cursor-pointer hover:scale-110 transition-all ease-in-out ${isDarkMode ? 'text-neutral-300 hover:text-blue-300' : 'text-neutral-700 hover:text-blue-600'}`} 
-          />
+          
+          <NavLink 
+            to="/Arpan-Portfolio/projects" 
+            className={({ isActive }) => 
+              `cursor-pointer transition-all font-medium ${
+                isActive 
+                  ? 'text-blue-500' 
+                  : isDarkMode 
+                    ? 'hover:text-blue-300' 
+                    : 'hover:text-blue-600'
+              }`
+            }
+            style={{ color: 'var(--text-primary)' }}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Projects
+          </NavLink>
+          
+          <NavLink 
+            to="/Arpan-Portfolio/resume" 
+            className={({ isActive }) => 
+              `cursor-pointer transition-all font-medium ${
+                isActive 
+                  ? 'text-blue-500' 
+                  : isDarkMode 
+                    ? 'hover:text-blue-300' 
+                    : 'hover:text-blue-600'
+              }`
+            }
+            style={{ color: 'var(--text-primary)' }}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Resume
+          </NavLink>
         </div>
       </div>
     </nav>

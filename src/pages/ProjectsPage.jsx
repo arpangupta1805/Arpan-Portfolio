@@ -56,6 +56,7 @@ const ProjectsPage = ({ isDarkMode }) => {
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2 mt-4">
+                <h4 className="text-md hover:font-semibold mb-2 w-[100%]">Tech stacks used</h4>
                 {project.technologies.map((tech, techIndex) => (
                   <span
                     key={techIndex}

@@ -14,6 +14,7 @@ import Resume from "./components/Resume";
 import ProjectsPage from "./pages/ProjectsPage";
 import AboutPage from "./pages/AboutPage";
 import ResumePage from "./pages/ResumePage";
+import Footer from "./components/Footer";
 
 function App() {
   // Initialize theme from localStorage, system preference, or default to dark mode
@@ -99,7 +100,7 @@ function App() {
   };
 
   return (
-    <div className={`overflow-x-hidden antialiased selection:bg-cyan-300 selection:text-cyan-900 ${isDarkMode ? 'text-neutral-300 bg-neutral-950' : 'text-neutral-800 bg-neutral-100'}`}>
+    <div className={`flex flex-col min-h-screen overflow-x-hidden antialiased selection:bg-cyan-300 selection:text-cyan-900 ${isDarkMode ? 'text-neutral-300 bg-neutral-950' : 'text-neutral-800 bg-neutral-100'}`}>
       <div className="fixed top-0 -z-10 h-full w-full">
         {" "}
         <div className={`absolute top-0 z-[-2] h-screen w-screen ${
@@ -109,22 +110,26 @@ function App() {
         }`}></div>
       </div>
       <Navbar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
-      <Routes>
-        <Route path="/Arpan-Portfolio" element={
-          <div className="container mx-auto px-8">
-            <Hero />
-            <About showTopThree={true} />
-            <Education />
-            <Tech />
-            {/* <Experience /> */}
-            <Project showTopThree={true} />
-            <Contact />
-          </div>
-        }/>
-        <Route path="/Arpan-Portfolio/resume" element={<ResumePage isDarkMode={isDarkMode} />} />
-        <Route path="/Arpan-Portfolio/projects" element={<ProjectsPage isDarkMode={isDarkMode} />} />
-        <Route path="/Arpan-Portfolio/about" element={<AboutPage isDarkMode={isDarkMode} />} />
-      </Routes>
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/Arpan-Portfolio" element={
+            <div className="container mx-auto px-8 pb-20">
+              <Hero />
+              <About showTopThree={true} />
+              <Education />
+              <Tech />
+              {/* <Experience /> */}
+              <Project showTopThree={true} />
+              <Contact />
+            </div>
+          }/>
+          <Route path="/Arpan-Portfolio/resume" element={<ResumePage isDarkMode={isDarkMode} />} />
+          <Route path="/Arpan-Portfolio/projects" element={<ProjectsPage isDarkMode={isDarkMode} />} />
+          <Route path="/Arpan-Portfolio/about" element={<AboutPage isDarkMode={isDarkMode} />} />
+        </Routes>
+      </main>
+      
+      <Footer isDarkMode={isDarkMode} />
 
       {/* Scroll to Top Button */}
       {showScrollButton && (

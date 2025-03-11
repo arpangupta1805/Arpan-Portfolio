@@ -1,4 +1,3 @@
-import { link } from "framer-motion/client";
 import project1 from "../assets/projects/project-1.jpg";
 import project2 from "../assets/projects/project-2.jpg";
 import project3 from "../assets/projects/project-3.jpg";
@@ -40,7 +39,7 @@ export const PROJECTS = [
     image: project2,
     description:
       "An application for managing tasks and projects, with features such as task creation, assignment, and progress tracking.",
-    technologies: ["HTML", "CSS", "React", "MongoDB"],
+    technologies: ["HTML", "CSS", "React Js", "MongoDB", "Tailwind"],
     link: "https://arpangupta1805.github.io/To-Do_List/"
   },
   {
@@ -48,7 +47,7 @@ export const PROJECTS = [
     image: project3,
     description:
       "A personal portfolio website showcasing projects, skills, and contact information.",
-    technologies: ["HTML", "CSS", "JavaScript","React.js", "Tailwind"],
+    technologies: ["HTML", "CSS", "JavaScript","React.js", "Tailwind", "Motion Library", "React Router", "Tailwind css"],
     link: "https://arpangupta1805.github.io/Arpan-Portfolio/"
   },
   {
