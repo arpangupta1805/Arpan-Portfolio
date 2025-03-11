@@ -49,7 +49,7 @@ export const PROJECTS = [
     description:
       "A personal portfolio website showcasing projects, skills, and contact information.",
     technologies: ["HTML", "CSS", "JavaScript","React.js", "Tailwind"],
-    link: "#"
+    link: "https://arpangupta1805.github.io/Arpan-Portfolio/"
   },
   {
     title: "Blogging Platform",
