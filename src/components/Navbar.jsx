@@ -86,20 +86,7 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
       
       {/* Desktop Navigation */}
       <div className={`hidden md:flex items-center justify-center gap-6 text-lg`}>
-        {isHomePage ? (
-          <>
-            <Link to="about" smooth={true} duration={500} spy={true} activeClass="text-blue-500" className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`} style={{ color: 'var(--text-primary)' }}>
-              About Me
-            </Link>
-            <Link to="education" smooth={true} duration={500} spy={true} activeClass="text-blue-500" className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`} style={{ color: 'var(--text-primary)' }}>
-              Education
-            </Link>
-
-            <Link to="projects" smooth={true} duration={500} spy={true} activeClass="text-blue-500" className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`} style={{ color: 'var(--text-primary)' }}>
-              Projects
-            </Link>
-          </>
-        ) : (
+        
           <>
             <NavLink to="/Arpan-Portfolio" className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`} style={{ color: 'var(--text-primary)' }}>
               Home
@@ -112,8 +99,6 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
               Projects
             </NavLink>
           </>
-        )}
-        
         <NavLink 
           to="/Arpan-Portfolio/resume" 
           className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
@@ -121,19 +106,6 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
         >
           Resume
         </NavLink>
-        
-        {isHomePage ? (
-          <Link 
-            to="contact" 
-            smooth={true} 
-            duration={500} 
-            spy={true}
-            activeClass="text-blue-500"
-            className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-            style={{ color: 'var(--text-primary)' }}
-          >Contact
-          </Link>
-        ) : (
           <NavLink 
             to="/Arpan-Portfolio/about" 
             className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
@@ -141,7 +113,6 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
           >
             Contact
           </NavLink>
-        )}
         
         <button 
           onClick={toggleTheme} 
@@ -154,55 +125,14 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
       {/* Mobile Navigation */}
       <div className={`md:hidden w-full ${isMenuOpen ? 'block' : 'hidden'} mt-4`}>
         <div className="flex flex-col items-center gap-4 py-2">
-          {isHomePage ? (
-            <>
-              <Link 
-                to="about" 
-                smooth={true} 
-                duration={500} 
-                spy={true} 
-                activeClass="text-blue-500"
-                className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-                style={{ color: 'var(--text-primary)' }}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About Me
-              </Link>
-              
-              <Link 
-                to="education" 
-                smooth={true} 
-                duration={500} 
-                spy={true} 
-                activeClass="text-blue-500"
-                className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Education
-              </Link>
-
-              <Link 
-                to="projects" 
-                smooth={true} 
-                duration={500} 
-                spy={true}
-                activeClass="text-blue-500"
-                className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Projects
-              </Link>
-            </>
-          ) : (
-            <NavLink 
-              to="/Arpan-Portfolio" 
-              className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
-              style={{ color: 'var(--text-primary)' }}
-              onClick={() => setIsMenuOpen(false)}
+          <NavLink 
+            to="/Arpan-Portfolio" 
+            className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
+            style={{ color: 'var(--text-primary)' }}
+            onClick={() => setIsMenuOpen(false)}
             >
               Home
             </NavLink>
-          )}
           
           <NavLink 
             to="/Arpan-Portfolio/about" 
