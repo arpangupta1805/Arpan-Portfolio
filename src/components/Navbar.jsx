@@ -1,6 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { NavLink } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
@@ -8,9 +7,6 @@ import { FaMoon, FaSun } from "react-icons/fa";
 
 const Navbar = ({ toggleTheme, isDarkMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
-  const isHomePage = location.pathname === "/Arpan-Portfolio" || location.pathname === "/Arpan-Portfolio";
-
   const handleInstagram = () => {
     window.open("https://www.instagram.com/arpan5218/");
   };
@@ -88,27 +84,27 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
       <div className={`hidden md:flex items-center justify-center gap-6 text-lg`}>
         
           <>
-            <NavLink to="/Arpan-Portfolio" className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`} style={{ color: 'var(--text-primary)' }}>
+            <NavLink to="/Arpan-Portfolio" className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`} style={{ color: 'var(--text-primary)' }}>
               Home
             </NavLink>
-            <NavLink  to="/Arpan-Portfolio/about"  className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`} style={{ color: 'var(--text-primary)' }}
+            <NavLink  to="/Arpan-Portfolio/about"  className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`} style={{ color: 'var(--text-primary)' }}
             >
               About
             </NavLink>
-            <NavLink to="/Arpan-Portfolio/projects" className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}style={{ color: 'var(--text-primary)' }}>
+            <NavLink to="/Arpan-Portfolio/projects" className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`}style={{ color: 'var(--text-primary)' }}>
               Projects
             </NavLink>
           </>
         <NavLink 
           to="/Arpan-Portfolio/resume" 
-          className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
+          className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`}
           style={{ color: 'var(--text-primary)' }}
         >
           Resume
         </NavLink>
           <NavLink 
             to="/Arpan-Portfolio/about" 
-            className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
+            className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`}
             style={{ color: 'var(--text-primary)' }}
           >
             Contact
@@ -127,7 +123,7 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
         <div className="flex flex-col items-center gap-4 py-2">
           <NavLink 
             to="/Arpan-Portfolio" 
-            className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium`}
+            className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`}
             style={{ color: 'var(--text-primary)' }}
             onClick={() => setIsMenuOpen(false)}
             >
@@ -143,7 +139,7 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
                   : isDarkMode 
                     ? 'hover:text-blue-300' 
                     : 'hover:text-blue-600'
-              }`
+              } hover:decoration-blue-500`
             }
             style={{ color: 'var(--text-primary)' }}
             onClick={() => setIsMenuOpen(false)}
@@ -160,7 +156,7 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
                   : isDarkMode 
                     ? 'hover:text-blue-300' 
                     : 'hover:text-blue-600'
-              }`
+              } hover:decoration-blue-500`
             }
             style={{ color: 'var(--text-primary)' }}
             onClick={() => setIsMenuOpen(false)}
@@ -177,7 +173,7 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
                   : isDarkMode 
                     ? 'hover:text-blue-300' 
                     : 'hover:text-blue-600'
-              }`
+              } hover:decoration-blue-500`
             }
             style={{ color: 'var(--text-primary)' }}
             onClick={() => setIsMenuOpen(false)}
