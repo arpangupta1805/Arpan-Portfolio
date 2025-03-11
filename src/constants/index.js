@@ -33,7 +33,7 @@ export const PROJECTS = [
     description:
       "An intuitive music player offering features such as playlist management, Recently playes songs and liked songs tracking. Also allows options of shuffle mode and to maintain queue. The site includes seamless keyboard controls for playing, pausing, skipping tracks, and adjusting volume, ensuring a smooth and engaging listening experience.",
     technologies: ["HTML", "CSS", "Javascript", "Node.js", "Express Js", "MongoDB"],
-    link: "https://arpangupta1805.github.io/Music-Player/"
+    link: "https://arpangupta1805.github.io/Music-Player"
   },
   {
     title: "Task Management App",
