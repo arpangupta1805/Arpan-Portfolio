@@ -1,5 +1,5 @@
-import { React, useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
@@ -7,6 +7,9 @@ import { FaMoon, FaSun } from "react-icons/fa";
 
 const Navbar = ({ toggleTheme, isDarkMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/" || location.pathname === "";
+  
   const handleInstagram = () => {
     window.open("https://www.instagram.com/arpan5218/");
   };
