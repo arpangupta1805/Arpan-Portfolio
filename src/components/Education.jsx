@@ -13,12 +13,12 @@ const Container = (delay) => ({
 
 const Education = () => {
   return (
-    <div className="flex flex-col items-center w-full lg:items-start border-b border-neutral-900 pb-4">
+    <div id='education' className="flex flex-col items-center w-full lg:items-start border-b border-neutral-900 pb-4">
         <motion.span
             variants={Container(0.6)}
             initial="hidden"
             animate="visible"
-            className="mb-4 bg-gradient-to-r text-center from-[#4682b4] via-slate-500 to-[#663399] bg-clip-text text-[2.5rem] tracking-tight text-transparent" >
+            className="mb-4 gradient-text text-center text-[2.5rem] tracking-tight" >
             Education
         </motion.span>
         <motion.div
@@ -27,7 +27,7 @@ const Education = () => {
         transition={{ duration: 0.8, delay: 0.5 }}
         className='flex lg:flex-col gap-8 lg:flex-wrap justify-start max-h-[50vh] max-w-[95vw] scrollbar-hide overflow-scroll'>
         {EDUCATIONS.map((education, index) => (
-            <div key={index} className="w-full md:w-[25rem] flex-col flex-wrap flex lg:items-center border-[2px] border-gray-600 rounded-2xl p-3 ">
+            <div key={index} className="w-full md:w-[25rem] flex-col flex-wrap flex lg:items-center border-[2px] border-gray-600 rounded-2xl p-3 hover:shadow-lg transition-all duration-300">
                 <motion.h1
                     variants={Container(0)}
                     initial="hidden" // this is the initial state

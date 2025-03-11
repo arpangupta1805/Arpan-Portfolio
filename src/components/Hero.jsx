@@ -31,7 +31,7 @@ const Hero = () => {
               variants={Container(0.6)}
               initial="hidden"
               animate="visible"
-              className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-3xl tracking-tight text-transparent"
+              className="gradient-text text-3xl tracking-tight"
             >
               Full Stack Developer
             </motion.span>
@@ -47,14 +47,18 @@ const Hero = () => {
         </div>
         <div className="w-full lg:w-1/2 lg:p-8">
           <div className="flex justify-center">
-            <motion.img
+            <motion.div
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: 100 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="size-2/3 rounded"
-              src={about}
-              alt="Dp"
-            />
+              className="w-2/3 aspect-square rounded-lg overflow-hidden shadow-lg"
+            >
+              <img
+                className="img-contain"
+                src={about}
+                alt="Arpan Gupta"
+              />
+            </motion.div>
           </div>
         </div>
       </div>
