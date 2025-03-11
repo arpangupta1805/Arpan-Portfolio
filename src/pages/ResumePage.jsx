@@ -14,9 +14,6 @@ const ResumePage = ({ isDarkMode }) => {
     document.body.removeChild(link);
   };
 
-  const openGoogleDrive = () => {
-    window.open('https://drive.google.com/file/d/1UZffH5ThHHYBGgGHWsFWcvSRDzuPncSl/view', '_blank');
-  };
 
   return (
     <div className={`min-h-screen container mx-auto px-8 py-10 ${isDarkMode ? 'text-neutral-300' : 'text-neutral-800'}`}>
@@ -35,12 +32,6 @@ const ResumePage = ({ isDarkMode }) => {
             className="btn btn-primary inline-flex items-center gap-2 transform hover:translate-y-[-2px]"
           >
             <FaDownload /> Download PDF
-          </button>
-          <button 
-            onClick={openGoogleDrive}
-            className="btn btn-outline inline-flex items-center gap-2 transform hover:translate-y-[-2px]"
-          >
-            <FaExternalLinkAlt /> View in Drive
           </button>
           <Link 
             to="/Arpan-Portfolio" 
