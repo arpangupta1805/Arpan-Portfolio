@@ -1,5 +1,5 @@
 import React from "react";
-import about from "../assets/about1.jpg";
+import about from "../assets/about1.jpeg";
 import { ABOUT_TEXT } from "../constants";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -38,7 +38,7 @@ const About = ({ showTopThree = false }) => {
         >
           <div className="flex items-center justify-center">
             <div className="w-2/3 aspect-square rounded-2xl overflow-hidden shadow-lg">
-              <img className="img-contain" src={about} alt="About img" />
+              <img className="h-full w-full object-cover object-center" src={about} alt="About img" />
             </div>
           </div>
         </motion.div>

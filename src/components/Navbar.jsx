@@ -36,7 +36,7 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
         <div className="flex items-center justify-center gap-2">
           <div className={`flex flex-shrink-0 items-center text-4xl border-r-2 ${isDarkMode ? 'border-gray-700' : 'border-gray-300'} pr-3`}>
             <NavLink 
-              to="/Arpan-Portfolio" 
+              to="/" 
               className={`mx-2 w-10 cursor-pointer font-bold ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all ease-in-out`}
               style={{ color: 'var(--text-primary)' }}
             >
@@ -87,31 +87,31 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
       <div className={`hidden md:flex items-center justify-center gap-6 text-lg`}>
         
           <>
-            <NavLink to="/Arpan-Portfolio" className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`} style={{ color: 'var(--text-primary)' }}>
+            <NavLink to="/" className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`} style={{ color: 'var(--text-primary)' }}>
               Home
             </NavLink>
-            <NavLink  to="/Arpan-Portfolio/about"  className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`} style={{ color: 'var(--text-primary)' }}
+            <NavLink to="/about" className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`} style={{ color: 'var(--text-primary)' }}
             >
               About
             </NavLink>
-            <NavLink to="/Arpan-Portfolio/projects" className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`}style={{ color: 'var(--text-primary)' }}>
+            <NavLink to="/projects" className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`}style={{ color: 'var(--text-primary)' }}>
               Projects
             </NavLink>
           </>
         <NavLink 
-          to="/Arpan-Portfolio/resume" 
+          to="/resume" 
           className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`}
           style={{ color: 'var(--text-primary)' }}
         >
           Resume
         </NavLink>
-          <NavLink 
-            to="/Arpan-Portfolio/about" 
-            className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`}
-            style={{ color: 'var(--text-primary)' }}
-          >
-            Contact
-          </NavLink>
+        <NavLink 
+          to="/about" 
+          className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`}
+          style={{ color: 'var(--text-primary)' }}
+        >
+          Contact
+        </NavLink>
         
         <button 
           onClick={toggleTheme} 
@@ -125,7 +125,7 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
       <div className={`md:hidden w-full ${isMenuOpen ? 'block' : 'hidden'} mt-4`}>
         <div className="flex flex-col items-center gap-4 py-2">
           <NavLink 
-            to="/Arpan-Portfolio" 
+            to="/" 
             className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`}
             style={{ color: 'var(--text-primary)' }}
             onClick={() => setIsMenuOpen(false)}
@@ -134,7 +134,7 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
             </NavLink>
           
           <NavLink 
-            to="/Arpan-Portfolio/about" 
+            to="/about" 
             className={({ isActive }) => 
               `cursor-pointer transition-all font-medium ${
                 isActive 
@@ -151,7 +151,7 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
           </NavLink>
           
           <NavLink 
-            to="/Arpan-Portfolio/projects" 
+            to="/projects" 
             className={({ isActive }) => 
               `cursor-pointer transition-all font-medium ${
                 isActive 
@@ -168,7 +168,7 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
           </NavLink>
           
           <NavLink 
-            to="/Arpan-Portfolio/resume" 
+            to="/resume" 
             className={({ isActive }) => 
               `cursor-pointer transition-all font-medium ${
                 isActive 

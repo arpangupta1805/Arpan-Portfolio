@@ -4,8 +4,8 @@ import { resolve } from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Arpan-Portfolio/',
   plugins: [react()],
+  base: '/', // Set base to root for development
   build: {
     outDir: 'dist',
     assetsDir: 'assets',

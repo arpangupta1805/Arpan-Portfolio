@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ABOUT_TEXT, CONTACT } from '../constants';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa';
-import about from '../assets/about1.jpg';
+import about from '../assets/about.png';
 
 const AboutPage = ({ isDarkMode }) => {
   const handleInstagram = () => {
@@ -30,7 +30,7 @@ const AboutPage = ({ isDarkMode }) => {
           About <span className="gradient-text">Me</span>
         </motion.h1>
         <Link 
-          to="/Arpan-Portfolio" 
+          to="/" 
           className="btn btn-primary inline-flex items-center gap-2"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

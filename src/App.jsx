@@ -15,6 +15,7 @@ import ProjectsPage from "./pages/ProjectsPage";
 import AboutPage from "./pages/AboutPage";
 import ResumePage from "./pages/ResumePage";
 import Footer from "./components/Footer";
+import Experience from "./components/Experience";
 
 function App() {
   // Initialize theme from localStorage, system preference, or default to dark mode
@@ -112,20 +113,20 @@ function App() {
       <Navbar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
       <main className="flex-grow">
         <Routes>
-          <Route path="/Arpan-Portfolio" element={
+          <Route path="/" element={
             <div className="container mx-auto px-8 pb-20">
               <Hero />
               <About showTopThree={true} />
               <Education />
               <Tech />
-              {/* <Experience /> */}
+              <Experience />
               <Project showTopThree={true} />
               <Contact />
             </div>
           }/>
-          <Route path="/Arpan-Portfolio/resume" element={<ResumePage isDarkMode={isDarkMode} />} />
-          <Route path="/Arpan-Portfolio/projects" element={<ProjectsPage isDarkMode={isDarkMode} />} />
-          <Route path="/Arpan-Portfolio/about" element={<AboutPage isDarkMode={isDarkMode} />} />
+          <Route path="/resume" element={<ResumePage isDarkMode={isDarkMode} />} />
+          <Route path="/projects" element={<ProjectsPage isDarkMode={isDarkMode} />} />
+          <Route path="/about" element={<AboutPage isDarkMode={isDarkMode} />} />
         </Routes>
       </main>
       
