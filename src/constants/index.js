@@ -11,12 +11,12 @@ export const ABOUT_TEXT = `I am a dedicated and versatile full stack developer w
 
 export const EXPERIENCES = [
   {
-    year: "2024 - 2025",
+    year: "2025 - 2025",
     role: "Frontend Engineer",
     company: "Open Source Contributer - Zen Citizen",
     description: `Integrated the Side Pannel Switching Bot, Audio input/output support with almost evry language using google voice recognition and gTTS, Image support for asking questions according to the image, Image resizer tool which resizes the image according to the government photo requirements.`,
     technologies: ["Reactjs", "Web Speech Api", "Open Ai APis", "axios", "browser-image-compression"],
-  },
+  }
 ];
 
 export const EDUCATIONS = [
@@ -51,7 +51,7 @@ export const PROJECTS = [
     link: "https://story-mosaic-eight.vercel.app/"
   },
   {
-    title: "Music-player",
+    title: "Tuneflow - Flow in the tune of the music",
     image: Music_image,
     description:
       "Developed a feature-rich music streaming application with an elegant, responsive interface and sophisticated audio management capabilities. Engineered a custom audio processing system that maintains playback state across sessions, implements intelligent queue management, and provides advanced playlist functionality. The application features keyboard shortcuts for seamless navigation and a unique audio visualization component.",
@@ -59,7 +59,7 @@ export const PROJECTS = [
     link: "https://arpangupta1805.github.io/Music-Player"
   },
   {
-    title: "Task Management App",
+    title: "Taskflow - Task Management App",
     image: Task_image,
     description:
       "Created a productivity-focused task management system that transforms complex project workflows into manageable action items. Implemented a priority-based task algorithm that intelligently suggests daily focus areas, integrated a pomodoro timer for enhanced productivity, and developed a progress analytics dashboard that visualizes productivity patterns over time.",
@@ -67,12 +67,12 @@ export const PROJECTS = [
     link: "https://arpangupta1805.github.io/To-Do_List/"
   },
   {
-    title: "Portfolio Website",
+    title: "Arpan Gupta's Portfolio",
     image: Portfolio_image,
     description:
       "Designed and developed a personal portfolio website that showcases my technical expertise and creative abilities through an interactive and visually engaging interface. Implemented performance optimizations resulting in a 95+ Lighthouse score, created custom animations using Framer Motion for enhanced user engagement, and built a responsive design system that ensures flawless presentation across all devices.",
     technologies: ["HTML", "CSS", "JavaScript","React.js", "Tailwind", "Motion Library", "React Router", "Tailwind css"],
-    link: "https://arpangupta1805.github.io/Arpan-Portfolio/"
+    link: "https://arpan-gupta.vercel.app/"
   },
   {
     title: "Blogging Platform",

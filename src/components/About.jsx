@@ -38,7 +38,7 @@ const About = ({ showTopThree = false }) => {
         >
           <div className="flex items-center justify-center">
             <div className="w-2/3 aspect-square rounded-2xl overflow-hidden shadow-lg">
-              <img className="h-full w-full object-cover object-center" src={about} alt="About img" />
+              <img className="w-full object-cover" src={about} alt="About img" />
             </div>
           </div>
         </motion.div>
