@@ -97,6 +97,9 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
             <NavLink to="/projects" className={({ isActive }) => `${isActive ? "text-blue-500" : ""} cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`}style={{ color: 'var(--text-primary)' }}>
               Projects
             </NavLink>
+            <a target="_blank" href="https://blog-gamma-topaz-88.vercel.app" className={`cursor-pointer transition-all font-medium ${isDarkMode 
+                    ? 'hover:text-blue-300' 
+                    : 'hover:text-blue-600'} hover:decoration-blue-500`}>Blog</a>
           </>
         <NavLink 
           to="/resume" 
@@ -104,13 +107,6 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
           style={{ color: 'var(--text-primary)' }}
         >
           Resume
-        </NavLink>
-        <NavLink 
-          to="/about" 
-          className={`cursor-pointer ${isDarkMode ? 'hover:text-blue-300' : 'hover:text-blue-600'} transition-all font-medium hover:decoration-blue-500`}
-          style={{ color: 'var(--text-primary)' }}
-        >
-          Contact
         </NavLink>
         
         <button 
@@ -167,6 +163,10 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
             Projects
           </NavLink>
           
+          <a target="_blank" href="https://blog-gamma-topaz-88.vercel.app" className={`cursor-pointer transition-all font-medium ${isDarkMode 
+                    ? 'hover:text-blue-300' 
+                    : 'hover:text-blue-600'} hover:decoration-blue-500`}>Blog</a>
+
           <NavLink 
             to="/resume" 
             className={({ isActive }) => 
