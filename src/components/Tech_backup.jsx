@@ -4,12 +4,14 @@ import {
   Code, 
   Database, 
   Globe, 
+  Smartphone, 
   Settings, 
   Zap,
   Star,
   Award
 } from "lucide-react";
-import { SiNextdotjs, SiTypescript, SiVite } from "react-icons/si";
+import { RiReactjsFill, RiNodejsLine } from "react-icons/ri";
+import { SiMongodb, SiExpress, SiJavascript, SiTypescript, SiTailwindcss, SiGit, SiMysql, SiNextdotjs, SiVite, SiRedux } from "react-icons/si";
 import { 
   ReactIcon, 
   NodeIcon, 
@@ -29,6 +31,7 @@ import {
   SQLIcon, 
   FramerMotionIcon 
 } from "./TechIcons";
+import { SiNextdotjs, SiTypescript, SiVite } from "react-icons/si";
 
 // Tech Category Component
 const TechCategory = ({ title, icon: Icon, technologies, delay, color }) => {

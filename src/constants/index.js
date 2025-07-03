@@ -1,10 +1,14 @@
-import LandWise_image from "../assets/projects/LandWise_image.png";
-import Wanderlust_image from "../assets/projects/Wanderlust_image.png";
-import Story_image from "../assets/projects/Story_image.png";
-import Music_image from "../assets/projects/Music_image.png";
-import Task_image from "../assets/projects/Task_image.png";
+// Project Images
+import LandWise_image from "../assets/projects/lendwise/Dashboard.png";
+import Wanderlust_image from "../assets/projects/wanderlust/Wanderlust_image.png";
+import Story_image from "../assets/projects/StoryMosaic/UserDashboard.png";
+import Music_image from "../assets/projects/Tuneflow/Landingpage.png";
+import Task_image from "../assets/projects/Taskflow/ViasulaiseTask.png";
 import Portfolio_image from "../assets/projects/Portfolio_image.png";
-import blogging_image from "../assets/projects/blogging_image.png";
+
+// Profile Images
+import ProfilePhoto from "../assets/images/Proffesional_profile_photo.jpg";
+import HeroBackground from "../assets/images/Hero.jpg";
 
 export const HERO_CONTENT = `I am a passionate full stack developer with a knack for crafting robust and scalable web applications. I have honed my skills in front-end technologies like React and Next.js, as well as back-end technologies like Node.js, MySQL, and MongoDB. My goal is to leverage my expertise to create innovative solutions that drive business growth and deliver exceptional user experiences.`;
 export const ABOUT_TEXT = `I am a dedicated and versatile full stack developer with a passion for creating efficient and user-friendly web applications. With 1 year of experience, I have worked with a variety of technologies, including React, Next.js, Node.js, MySQL, and MongoDB. My journey in web development began with a deep curiosity for how things work, and it has evolved into a career where I continuously strive to learn and adapt to new challenges. I thrive in collaborative environments and enjoy solving complex problems to deliver high-quality solutions. Outside of coding, I enjoy staying active, exploring new technologies, and contributing to open-source projects.`;
@@ -73,15 +77,7 @@ export const PROJECTS = [
       "Designed and developed a personal portfolio website that showcases my technical expertise and creative abilities through an interactive and visually engaging interface. Implemented performance optimizations resulting in a 95+ Lighthouse score, created custom animations using Framer Motion for enhanced user engagement, and built a responsive design system that ensures flawless presentation across all devices.",
     technologies: ["HTML", "CSS", "JavaScript","React.js", "Tailwind", "Motion Library", "React Router", "Tailwind css"],
     link: "https://arpan-gupta.vercel.app/"
-  },
-  {
-    title: "Blogging Platform",
-    image: blogging_image,
-    description:
-      "Engineered a modern blogging platform that emphasizes content discovery and reader engagement through an intuitive interface. Implemented a rich text editor with markdown support, developed a sophisticated content recommendation algorithm based on reading patterns, and created a responsive design system that adapts to various screen sizes while maintaining optimal readability.",
-    technologies: ["HTML", "CSS", "React.js", "Express", "localStorage"],
-    link: "https://arpangupta1805.github.io/Static-Blog-website/"
-  },
+  }
 ];
 
 export const CONTACT = {
@@ -89,3 +85,173 @@ export const CONTACT = {
   phoneNo: "+91 7726930361 ",
   email: "24110051@iitgn.ac.in",
 };
+
+// Social Media URLs - Change from one place
+export const SOCIAL_LINKS = {
+  instagram: "https://www.instagram.com/arpan5218/",
+  github: "https://github.com/arpangupta1805",
+  linkedin: "https://www.linkedin.com/in/arpan-gupta-ab2959319/",
+  email: "mailto:24110051@iitgn.ac.in",
+};
+
+// External Links - Centralized external URLs
+export const EXTERNAL_LINKS = {
+  blog: "https://blog-gamma-topaz-88.vercel.app",
+  portfolio: "https://arpan-gupta.vercel.app/",
+};
+
+// Navigation Configuration - Used in Navbar.jsx and Footer.jsx
+export const NAV_ITEMS = [
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
+  { to: "/projects", label: "Projects" },
+  { to: "/resume", label: "Resume" }
+];
+
+// Theme Configuration - App level theme settings
+export const THEME_CONFIG = {
+  scrollThreshold: 50, // When to show scrolled navbar state
+  scrollButtonThreshold: 500, // When to show scroll-to-top button (was 300, now 500)
+  scrollDuration: 800, // Scroll animation duration in ms (was 500, now 800)
+};
+
+// Personal Info - Used across components for consistent personal details
+export const PERSONAL_INFO = {
+  name: "Arpan Gupta",
+  title: "Full Stack Developer", 
+  fullTitle: "Full Stack Developer & Tech Enthusiast",
+  initials: "AG",
+  tagline: "Building digital experiences that matter",
+  currentRole: "Student at IIT Gandhinagar",
+  institution: "Indian Institute of Technology, Gandhinagar",
+  degree: "B.Tech in Computer Science and Engineering",
+  description: "Get to know the person behind the code",
+  resumeFileName: "Arpan_Gupta_Resume.pdf"
+};
+
+// Page Titles and Descriptions - Centralized page content
+export const PAGE_CONTENT = {
+  about: {
+    title: "About Me",
+    description: "Get to know the person behind the code",
+    backButtonText: "Back to Home"
+  },
+  projects: {
+    title: "All Projects", 
+    description: "A collection of my work and experiments",
+    backButtonText: "Back to Home",
+    viewAllText: "View All Projects",
+    viewProjectText: "View Project"
+  },
+  resume: {
+    title: "My Resume",
+    downloadText: "Download PDF",
+    backButtonText: "Back to Home"
+  }
+};
+
+// Button Labels - Centralized button text content
+export const BUTTON_LABELS = {
+  downloadCV: "Download CV",
+  viewPortfolio: "View Portfolio", 
+  viewProject: "View Project",
+  viewAllProjects: "View All Projects",
+  readMore: "Read More about Arpan Gupta",
+  backToHome: "Back to Home",
+  viewMyWork: "View My Work",
+  downloadPDF: "Download PDF",
+  connect: "Let's Connect"
+};
+
+// Stats - Real numbers based on actual data
+export const STATS = {
+  projectsCompleted: PROJECTS.length, // Real count from projects array (currently 6)
+  technologies: 15, // Fixed count based on actual tech stack used across projects
+  experienceYears: 1, // Real experience in years
+  passionLevel: 100, // Always 100%
+};
+
+// AboutPage specific stats - Used for animated counters in AboutPage.jsx
+export const ABOUT_STATS = {
+  projects: PROJECTS.length, // Real project count from PROJECTS array
+  experience: 1, // Years of experience (matches STATS.experienceYears)
+  technologies: 15, // Total technologies mastered (matches STATS.technologies)
+  // Note: Removed coffee counter as it was just decorative
+};
+
+// AboutPage animation durations - Used for counter animations in AboutPage.jsx
+export const ANIMATION_CONFIG = {
+  counterDurations: {
+    projects: 2000, // 2 seconds for project counter
+    experience: 1500, // 1.5 seconds for experience counter  
+    technologies: 2500, // 2.5 seconds for technologies counter
+  },
+  counterUpdateInterval: 50, // Update counter every 50ms for smooth animation
+};
+
+// Hero component typing texts - Used in Hero.jsx TypingAnimation
+export const HERO_TYPING_TEXTS = [
+  "Full Stack Developer",
+  "Problem Solver", 
+  "Tech Enthusiast",
+  "Code Architect"
+];
+
+// About component passion points - Used in About.jsx PassionPoints component
+export const PASSION_POINTS = [
+  {
+    title: "Clean Code",
+    description: "Writing maintainable, scalable code",
+    color: "text-blue-500"
+  },
+  {
+    title: "Performance", 
+    description: "Optimizing for speed and efficiency",
+    color: "text-yellow-500"
+  },
+  {
+    title: "Collaboration",
+    description: "Working with amazing teams",
+    color: "text-green-500"
+  },
+  {
+    title: "Innovation",
+    description: "Creating solutions that matter",
+    color: "text-purple-500"
+  }
+];
+
+// Contact component quick actions - Used in Contact.jsx QuickActions component
+export const CONTACT_ACTIONS = [
+  {
+    title: "Instagram",
+    description: "Follow my journey",
+    color: "from-pink-500 to-purple-500"
+  },
+  {
+    title: "GitHub", 
+    description: "Code reviews & collaboration",
+    color: "from-gray-700 to-gray-900"
+  },
+  {
+    title: "LinkedIn",
+    description: "Connect professionally", 
+    color: "from-blue-600 to-blue-700"
+  }
+];
+
+// Footer navigation links - Used in Footer.jsx (uses NAV_ITEMS for consistency)
+export const FOOTER_LINKS = NAV_ITEMS.map(item => ({
+  name: item.label,
+  path: item.to
+}));
+
+// Response time data - Used in Contact.jsx for response time display
+export const RESPONSE_TIMES = [
+  { label: "Email Response", time: "< 24h", color: "green" },
+  { label: "Project Discussion", time: "Same Day", color: "blue" },
+  { label: "Project Quotes", time: "48h", color: "purple" }
+];
+
+// Export profile images for use in components
+export { ProfilePhoto, HeroBackground };

@@ -1,108 +1,332 @@
-import React from 'react';
-import { PROJECTS } from '../constants';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { PROJECTS, PAGE_CONTENT, BUTTON_LABELS } from '../constants';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { 
+  FaArrowLeft, 
+  FaExternalLinkAlt, 
+  FaGithub, 
+  FaSearch,
+  FaStar,
+  FaCode,
+  FaCalendar,
+  FaEye
+} from 'react-icons/fa';
 
 const ProjectsPage = ({ isDarkMode }) => {
-  return (
-    <div className={`min-h-screen py-16 ${isDarkMode ? 'text-neutral-300' : 'text-neutral-800'}`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-16">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-5xl font-bold gradient-text mb-6 md:mb-0"
-          >
-            All Projects
-          </motion.h1>
-          <Link 
-            to="/" 
-            className="btn btn-primary inline-flex items-center gap-2 transform hover:translate-y-[-2px] hover:shadow-lg transition-all duration-300"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
-            </svg>
-            <span>Back to Home</span>
-          </Link>
-        </div>
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedFilter, setSelectedFilter] = useState('All');
+  const [hoveredProject, setHoveredProject] = useState(null);
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {PROJECTS.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="card overflow-hidden rounded-xl hover:shadow-xl hover:translate-y-[-5px] transition-all duration-300 flex flex-col h-full"
-              style={{ backgroundColor: 'var(--card-bg)' }}
+  // Extract unique technologies for filter
+  const allTechnologies = [...new Set(PROJECTS.flatMap(project => project.technologies))];
+  const filters = ['All', ...allTechnologies.slice(0, 8)]; // Limit to prevent overcrowding
+
+  // Filter projects based on search and technology filter
+  const filteredProjects = PROJECTS.filter(project => {
+    const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         project.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesFilter = selectedFilter === 'All' || project.technologies.includes(selectedFilter);
+    return matchesSearch && matchesFilter;
+  });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
+  return (
+    <div className={`min-h-screen pt-24 pb-12 ${isDarkMode ? 'text-neutral-300' : 'text-neutral-800'}`}>
+      <div className="container mx-auto px-6 max-w-7xl">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <div className="flex flex-col md:flex-row justify-between items-center mb-8">
+            <div className="text-left">
+              <h1 className="text-5xl md:text-6xl font-bold gradient-text mb-4">
+                {PAGE_CONTENT.projects.title}
+              </h1>
+              <p className={`text-lg ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                {PAGE_CONTENT.projects.description}
+              </p>
+            </div>
+            <Link 
+              to="/" 
+              className="btn btn-primary inline-flex items-center gap-2 mt-6 md:mt-0 group"
             >
-              <div className="relative overflow-hidden h-52">
-                <a href={project.link} target="_blank" rel="noopener noreferrer">
-                  <img 
+              <FaArrowLeft className="group-hover:-translate-x-1 transition-transform duration-300" />
+              <span>{PAGE_CONTENT.projects.backButtonText}</span>
+            </Link>
+          </div>
+
+          {/* Search and Filter Controls */}
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
+            {/* Search Bar */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="relative flex-1 max-w-md"
+            >
+              <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search projects..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className={`w-full pl-10 pr-4 py-3 rounded-xl border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  isDarkMode 
+                    ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-400' 
+                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
+                }`}
+              />
+            </motion.div>
+
+            {/* Filter Buttons */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex flex-wrap gap-2"
+            >
+              {filters.slice(0, 6).map((filter) => (
+                <button
+                  key={filter}
+                  onClick={() => setSelectedFilter(filter)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                    selectedFilter === filter
+                      ? 'bg-blue-500 text-white shadow-lg'
+                      : isDarkMode
+                      ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {filter}
+                </button>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Results Counter */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className={`mt-4 text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}
+          >
+            Showing {filteredProjects.length} of {PROJECTS.length} projects
+          </motion.p>
+        </motion.div>
+
+        {/* Projects Grid */}
+        <AnimatePresence>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                variants={itemVariants}
+                layout
+                onMouseEnter={() => setHoveredProject(index)}
+                onMouseLeave={() => setHoveredProject(null)}
+                className="card overflow-hidden rounded-2xl group cursor-pointer h-full flex flex-col"
+              >
+                {/* Project Image */}
+                <div className="relative overflow-hidden h-56">
+                  <motion.img 
                     src={project.image} 
                     alt={project.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    whileHover={{ scale: 1.05 }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <span className="text-white p-4 font-medium">View Project</span>
-                  </div>
-                </a>
-              </div>
-              <div className="p-6 flex flex-col flex-grow">
-                <a 
-                  href={project.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className={`text-xl font-bold mb-3 block hover:text-blue-500 transition-colors duration-300 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}
-                >
-                  {project.title}
-                </a>
-                <p className={`mb-5 line-clamp-3 flex-grow ${isDarkMode ? 'text-neutral-400' : 'text-neutral-600'}`}>
-                  {project.description}
-                </p>
-                <div className="space-y-4 mt-auto">
-                  <h4 className="text-md font-semibold">Tech Stack</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.slice(0, 5).map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-3 py-1 rounded-full text-sm transform hover:scale-105 transition-transform duration-300"
-                        style={{ 
-                          backgroundColor: 'var(--tech-tag-bg)', 
-                          color: 'var(--tech-tag-text)' 
-                        }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 5 && (
-                      <span className="px-3 py-1 rounded-full text-sm bg-blue-500 text-white">
-                        +{project.technologies.length - 5} more
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
-                  <a 
-                    href={project.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-blue-500 hover:text-blue-700 font-medium transition-colors duration-300"
+                  
+                  {/* Overlay */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: hoveredProject === index ? 1 : 0 }}
+                    className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-between p-6"
                   >
-                    View Project
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </a>
+                    <div className="flex gap-3">
+                      <motion.a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="p-2 bg-white/20 backdrop-blur-sm rounded-lg text-white hover:bg-white/30 transition-all duration-300"
+                        title="View Live Demo"
+                      >
+                        <FaEye />
+                      </motion.a>
+                      {project.github && (
+                        <motion.a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          className="p-2 bg-white/20 backdrop-blur-sm rounded-lg text-white hover:bg-white/30 transition-all duration-300"
+                          title="View Source Code"
+                        >
+                          <FaGithub />
+                        </motion.a>
+                      )}
+                    </div>
+                    <div className="text-white text-right">
+                      <FaStar className="text-yellow-400" />
+                    </div>
+                  </motion.div>
+
+                  {/* Featured Badge */}
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-blue-500 text-white text-xs font-medium rounded-full">
+                      Featured
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+
+                {/* Project Content */}
+                <div className="p-6 flex flex-col flex-grow">
+                  {/* Project Title */}
+                  <motion.h3
+                    className="text-xl font-bold mb-3 group-hover:text-blue-500 transition-colors duration-300"
+                    whileHover={{ x: 5 }}
+                  >
+                    {project.title}
+                  </motion.h3>
+
+                  {/* Project Description */}
+                  <p className={`mb-4 text-sm leading-relaxed flex-grow ${
+                    isDarkMode ? 'text-neutral-400' : 'text-neutral-600'
+                  }`}>
+                    {project.description}
+                  </p>
+
+                  {/* Technologies */}
+                  <div className="mb-4">
+                    <h4 className="text-sm font-semibold mb-2 flex items-center gap-2">
+                      <FaCode className="text-blue-500" />
+                      Tech Stack
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.slice(0, 4).map((tech, techIndex) => (
+                        <motion.span
+                          key={techIndex}
+                          whileHover={{ scale: 1.05 }}
+                          className="px-2 py-1 rounded-lg text-xs font-medium transition-all duration-300"
+                          style={{ 
+                            backgroundColor: 'var(--tech-tag-bg)', 
+                            color: 'var(--tech-tag-text)' 
+                          }}
+                        >
+                          {tech}
+                        </motion.span>
+                      ))}
+                      {project.technologies.length > 4 && (
+                        <span className="px-2 py-1 rounded-lg text-xs bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+                          +{project.technologies.length - 4} more
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Project Actions */}
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700 mt-auto">
+                    <motion.a 
+                      href={project.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      className="inline-flex items-center gap-2 text-blue-500 hover:text-blue-700 font-medium text-sm transition-colors duration-300"
+                    >
+                      <FaExternalLinkAlt />
+                      {PAGE_CONTENT.projects.viewProjectText}
+                    </motion.a>
+                    
+                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                      <FaCalendar />
+                      <span>2024</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* No Results */}
+        {filteredProjects.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center py-16"
+          >
+            <div className="text-6xl mb-4">🔍</div>
+            <h3 className="text-xl font-semibold mb-2">No projects found</h3>
+            <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              Try adjusting your search or filter criteria
+            </p>
+            <button
+              onClick={() => {
+                setSearchTerm('');
+                setSelectedFilter('All');
+              }}
+              className="btn btn-primary mt-4"
+            >
+              Clear Filters
+            </button>
+          </motion.div>
+        )}
+
+        {/* Call to Action */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-center mt-16"
+        >
+          <div className="card p-8 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold mb-4">Like what you see?</h3>
+            <p className={`mb-6 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              Let's collaborate on your next project and create something amazing together.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link to="/about" className="btn btn-primary">
+                Get In Touch
+              </Link>
+              <Link to="/resume" className="btn btn-secondary">
+                View Resume
+              </Link>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
 };
 
-export default ProjectsPage; 
+export default ProjectsPage;
