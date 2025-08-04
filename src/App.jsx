@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { animateScroll as scroll } from "react-scroll";
 import { ChevronUp, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import "./App.css";
+
 
 // Components
 import About from "./components/About";

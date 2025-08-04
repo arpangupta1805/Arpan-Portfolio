@@ -183,11 +183,11 @@ p {
 
 /* Enhanced Card Styles */
 .card {
-  @apply glass-card transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl;
+  @apply glass-card transition-all duration-500;
 }
 
 .card-elevated {
-  @apply card shadow-xl hover:shadow-2xl;
+  @apply card shadow-xl;
 }
 
 .card-interactive {
