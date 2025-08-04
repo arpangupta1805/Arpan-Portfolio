@@ -1,4 +1,5 @@
 // Project Images
+import Dhanush_image from "../assets/projects/DhanushAI.png"
 import LandWise_image from "../assets/projects/lendwise/Dashboard.png";
 import Wanderlust_image from "../assets/projects/wanderlust/Wanderlust_image.png";
 import Story_image from "../assets/projects/StoryMosaic/UserDashboard.png";
@@ -34,25 +35,36 @@ export const EDUCATIONS = [
 
 export const PROJECTS = [
   {
+    title: "DhanushAI - Web Assistant",
+    image: Dhanush_image,
+    description: "Designed a smart browser interface capable of opening any platforms through natural language, YouTube playback, and dynamic weather API integrations. Built a fully functional, multimodal browser supporting both voice and text interaction with real-time back-end communication and LLM response generation(Meta | LLaM A3). Gained hands-on experience with Meta’s LLaMA3 LLM, Google’s gTTS for speech recognition, and real-time communication using WebSockets.",
+    technologies: ["React", "Web-Sockiets", "Tailwind", "gTTS", "API key Integration", "Dynamic chats", "Youtube Playback"],
+    link: "https://web-assistant-arpan.vercel.app",
+    category: "AI Agent"
+  },
+  {
     title: "LendWise - Lend Money Smartly",
     image: LandWise_image,
     description: "Designed and developed LendWise, a lending platform enabling users to lend and borrow money with a secure and user-friendly interface. Implemented features including user authentication, loan management, and a responsive design to provide a seamless lending experience.",
     technologies: ["HTML", "CSS", "Javascript", "Node.js", "Express Js", "MongoDB", "React.js", "Motion Library", "React Router", "Tailwind css", "Body-Parser", "bcryptjs", "jsonwebtoken", "mongoose", "axios", "nodemailer"],
-    link: "https://moneylanding.vercel.app"
+    link: "https://moneylanding.vercel.app",
+    category: "Fintech"
   },
   {
     title: "Wanderlust - Interactive Itinerary Board",
     image: Wanderlust_image,
     description: "Crafted an intuitive travel planning platform that transforms chaotic trip planning into a streamlined visual experience. Implemented a sophisticated drag-and-drop interface for itinerary customization, integrated real-time weather forecasting API to enhance trip preparation, and developed a proprietary algorithm that optimizes daily activities based on proximity and user preferences.",
     technologies: ["HTML", "CSS", "Javascript", "Node.js", "Express Js", "MongoDB", "React.js", "Motion Library", "React Router", "Tailwind css", "Html2pdf", "OpenWeatherMap API", "React-Toastify", "React-Beautiful-Dnd", "marked", "moongose"],
-    link: "https://code-circuit-n5ct.vercel.app/"
+    link: "https://code-circuit-n5ct.vercel.app/",
+    category: "Travel"
   },
   {
     title: "Story Mosaic: Story Editing Platform ",
     image: Story_image,
     description: "Architected a collaborative writing platform that bridges the gap between authors and their audience through an innovative contribution system. Implemented a GitHub-inspired pull request feature that allows readers to suggest plot developments while maintaining narrative integrity. The platform's unique branching system enables unlimited creative exploration while preserving the original storyline.",
     technologies: ["HTML", "CSS", "Javascript", "Node.js", "Express Js", "MongoDB", "React.js", "Motion Library", "React Router", "Tailwind css", "Body-Parser", "bcryptjs", "jsonwebtoken", "mongoose", "axios"],
-    link: "https://story-mosaic-eight.vercel.app/"
+    link: "https://story-mosaic-eight.vercel.app/",
+    category: "Writing"
   },
   {
     title: "Tuneflow - Flow in the tune of the music",
@@ -60,7 +72,8 @@ export const PROJECTS = [
     description:
       "Developed a feature-rich music streaming application with an elegant, responsive interface and sophisticated audio management capabilities. Engineered a custom audio processing system that maintains playback state across sessions, implements intelligent queue management, and provides advanced playlist functionality. The application features keyboard shortcuts for seamless navigation and a unique audio visualization component.",
     technologies: ["HTML", "CSS", "Javascript", "Node.js", "Express Js", "MongoDB"],
-    link: "https://arpangupta1805.github.io/Music-Player"
+    link: "https://arpangupta1805.github.io/Music-Player",
+    category: "Music"
   },
   {
     title: "Taskflow - Task Management App",
@@ -68,7 +81,8 @@ export const PROJECTS = [
     description:
       "Created a productivity-focused task management system that transforms complex project workflows into manageable action items. Implemented a priority-based task algorithm that intelligently suggests daily focus areas, integrated a pomodoro timer for enhanced productivity, and developed a progress analytics dashboard that visualizes productivity patterns over time.",
     technologies: ["HTML", "CSS", "React Js", "MongoDB", "Tailwind"],
-    link: "https://arpangupta1805.github.io/To-Do_List/"
+    link: "https://arpangupta1805.github.io/To-Do_List/",
+    category: "Productivity"
   },
   {
     title: "Arpan Gupta's Portfolio",
@@ -76,7 +90,8 @@ export const PROJECTS = [
     description:
       "Designed and developed a personal portfolio website that showcases my technical expertise and creative abilities through an interactive and visually engaging interface. Implemented performance optimizations resulting in a 95+ Lighthouse score, created custom animations using Framer Motion for enhanced user engagement, and built a responsive design system that ensures flawless presentation across all devices.",
     technologies: ["HTML", "CSS", "JavaScript","React.js", "Tailwind", "Motion Library", "React Router", "Tailwind css"],
-    link: "https://arpan-gupta.vercel.app/"
+    link: "https://arpan-gupta.vercel.app/",
+    category: "Portfolio"
   }
 ];
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { PROJECTS, PAGE_CONTENT, BUTTON_LABELS } from '../constants';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -10,23 +10,41 @@ import {
   FaStar,
   FaCode,
   FaCalendar,
-  FaEye
+  FaEye,
+  FaChevronDown,
+  FaFilter
 } from 'react-icons/fa';
 
 const ProjectsPage = ({ isDarkMode }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('All');
   const [hoveredProject, setHoveredProject] = useState(null);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const filterRef = useRef(null);
 
-  // Extract unique technologies for filter
-  const allTechnologies = [...new Set(PROJECTS.flatMap(project => project.technologies))];
-  const filters = ['All', ...allTechnologies.slice(0, 8)]; // Limit to prevent overcrowding
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (filterRef.current && !filterRef.current.contains(event.target)) {
+        setIsFilterOpen(false);
+      }
+    };
 
-  // Filter projects based on search and technology filter
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  // Extract unique categories for filter
+  const allCategories = [...new Set(PROJECTS.map(project => project.category))];
+  const filters = ['All', ...allCategories];
+
+  // Filter projects based on search and category filter
   const filteredProjects = PROJECTS.filter(project => {
     const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          project.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesFilter = selectedFilter === 'All' || project.technologies.includes(selectedFilter);
+    const matchesFilter = selectedFilter === 'All' || project.category === selectedFilter;
     return matchesSearch && matchesFilter;
   });
 
@@ -102,28 +120,64 @@ const ProjectsPage = ({ isDarkMode }) => {
               />
             </motion.div>
 
-            {/* Filter Buttons */}
+            {/* Filter Dropdown */}
             <motion.div
+              ref={filterRef}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-wrap gap-2"
+              className="relative"
             >
-              {filters.slice(0, 6).map((filter) => (
-                <button
-                  key={filter}
-                  onClick={() => setSelectedFilter(filter)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                    selectedFilter === filter
-                      ? 'bg-blue-500 text-white shadow-lg'
-                      : isDarkMode
-                      ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  {filter}
-                </button>
-              ))}
+              <button
+                onClick={() => setIsFilterOpen(!isFilterOpen)}
+                className={`flex items-center gap-2 px-4 py-3 rounded-xl border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  isDarkMode 
+                    ? 'bg-gray-800 border-gray-700 text-white hover:bg-gray-700' 
+                    : 'bg-white border-gray-300 text-gray-900 hover:bg-gray-50'
+                }`}
+              >
+                <FaFilter className="text-sm" />
+                <span className="font-medium">{selectedFilter}</span>
+                <FaChevronDown className={`text-sm transition-transform duration-300 ${isFilterOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Dropdown Menu */}
+              <AnimatePresence>
+                {isFilterOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className={`absolute top-full mt-2 w-48 rounded-xl border shadow-lg z-10 ${
+                      isDarkMode 
+                        ? 'bg-gray-800 border-gray-700' 
+                        : 'bg-white border-gray-200'
+                    }`}
+                  >
+                    <div className="py-2">
+                      {filters.map((filter) => (
+                        <button
+                          key={filter}
+                          onClick={() => {
+                            setSelectedFilter(filter);
+                            setIsFilterOpen(false);
+                          }}
+                          className={`w-full px-4 py-2 text-left text-sm font-medium transition-colors duration-200 ${
+                            selectedFilter === filter
+                              ? 'bg-blue-500 text-white'
+                              : isDarkMode
+                              ? 'text-gray-300 hover:bg-gray-700'
+                              : 'text-gray-700 hover:bg-gray-100'
+                          }`}
+                        >
+                          {filter}
+                        </button>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           </div>
 
@@ -218,6 +272,13 @@ const ProjectsPage = ({ isDarkMode }) => {
                   >
                     {project.title}
                   </motion.h3>
+
+                  {/* Category Badge */}
+                  <div className="mb-3">
+                    <span className="inline-block px-3 py-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-medium rounded-full">
+                      {project.category}
+                    </span>
+                  </div>
 
                   {/* Project Description */}
                   <p className={`mb-4 text-sm leading-relaxed flex-grow ${

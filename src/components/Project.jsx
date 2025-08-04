@@ -140,6 +140,14 @@ const ProjectCard = ({ project, index, isInView }) => {
             <h3 className="text-xl lg:text-2xl font-bold group-hover:text-blue-500 transition-colors duration-300">
               {project.title}
             </h3>
+            
+            {/* Category Badge */}
+            <div className="mb-2">
+              <span className="inline-block px-3 py-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-medium rounded-full">
+                {project.category}
+              </span>
+            </div>
+            
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3">
               {project.description}
             </p>
