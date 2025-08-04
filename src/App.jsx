@@ -5,6 +5,7 @@ import { ChevronUp, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 
+
 // Components
 import About from "./components/About";
 import Contact from "./components/Contact";
