@@ -18,6 +18,7 @@ import { PROJECTS, BUTTON_LABELS } from "../constants";
 // Enhanced Project Card Component
 const ProjectCard = ({ project, index, isInView }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [showAllTech, setShowAllTech] = useState(false);
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.9 },
@@ -159,20 +160,28 @@ const ProjectCard = ({ project, index, isInView }) => {
               Technologies
             </h4>
             <div className="flex flex-wrap gap-2">
-              {project.technologies.slice(0, 6).map((tech, techIndex) => (
+              {(showAllTech ? project.technologies : project.technologies.slice(0, 6)).map((tech, techIndex) => (
                 <motion.span
                   key={techIndex}
                   className="px-3 py-1 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-sm font-medium text-blue-600 dark:text-blue-400"
                   whileHover={{ scale: 1.05, backgroundColor: "rgba(59, 130, 246, 0.1)" }}
                   transition={{ duration: 0.2 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
                 >
                   {tech}
                 </motion.span>
               ))}
               {project.technologies.length > 6 && (
-                <span className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-medium text-gray-600 dark:text-gray-400">
-                  +{project.technologies.length - 6}
-                </span>
+                <motion.button
+                  onClick={() => setShowAllTech(!showAllTech)}
+                  className="px-3 py-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full text-sm font-medium text-gray-600 dark:text-gray-400 transition-colors duration-200 cursor-pointer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {showAllTech ? 'Show Less' : `+${project.technologies.length - 6} more`}
+                </motion.button>
               )}
             </div>
           </div>

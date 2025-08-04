@@ -20,6 +20,7 @@ const ProjectsPage = ({ isDarkMode }) => {
   const [selectedFilter, setSelectedFilter] = useState('All');
   const [hoveredProject, setHoveredProject] = useState(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [expandedTech, setExpandedTech] = useState({});
   const filterRef = useRef(null);
 
   // Close dropdown when clicking outside
@@ -39,6 +40,14 @@ const ProjectsPage = ({ isDarkMode }) => {
   // Extract unique categories for filter
   const allCategories = [...new Set(PROJECTS.map(project => project.category))];
   const filters = ['All', ...allCategories];
+
+  // Toggle technology display for a specific project
+  const toggleTechDisplay = (projectTitle) => {
+    setExpandedTech(prev => ({
+      ...prev,
+      [projectTitle]: !prev[projectTitle]
+    }));
+  };
 
   // Filter projects based on search and category filter
   const filteredProjects = PROJECTS.filter(project => {
@@ -294,7 +303,7 @@ const ProjectsPage = ({ isDarkMode }) => {
                       Tech Stack
                     </h4>
                     <div className="flex flex-wrap gap-2">
-                      {project.technologies.slice(0, 4).map((tech, techIndex) => (
+                      {(expandedTech[project.title] ? project.technologies : project.technologies.slice(0, 4)).map((tech, techIndex) => (
                         <motion.span
                           key={techIndex}
                           whileHover={{ scale: 1.05 }}
@@ -303,14 +312,22 @@ const ProjectsPage = ({ isDarkMode }) => {
                             backgroundColor: 'var(--tech-tag-bg)', 
                             color: 'var(--tech-tag-text)' 
                           }}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.2, delay: techIndex * 0.05 }}
                         >
                           {tech}
                         </motion.span>
                       ))}
                       {project.technologies.length > 4 && (
-                        <span className="px-2 py-1 rounded-lg text-xs bg-gradient-to-r from-blue-500 to-purple-500 text-white">
-                          +{project.technologies.length - 4} more
-                        </span>
+                        <motion.button
+                          onClick={() => toggleTechDisplay(project.title)}
+                          className="px-2 py-1 rounded-lg text-xs bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300 cursor-pointer"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          {expandedTech[project.title] ? 'Show Less' : `+${project.technologies.length - 4} more`}
+                        </motion.button>
                       )}
                     </div>
                   </div>
