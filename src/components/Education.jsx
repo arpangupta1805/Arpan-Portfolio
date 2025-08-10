@@ -50,16 +50,6 @@ const EducationCard = ({ education, index, isInView }) => {
       animate={isInView ? "visible" : "hidden"}
       className="group relative"
     >
-      {/* Timeline Line */}
-      {/* <div className="absolute left-8 top-20 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-purple-500 opacity-30 group-hover:opacity-100 transition-opacity duration-300" /> */}
-      
-      {/* Timeline Dot */}
-      {/* <motion.div
-        className="absolute left-6 top-16 w-5 h-5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full z-10 group-hover:scale-125 transition-transform duration-300"
-        variants={iconVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-      /> */}
 
       <div className="glass-card ml-16 p-8 rounded-2xl hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-1">
         {/* Institution Header */}
@@ -121,6 +111,14 @@ const EducationCard = ({ education, index, isInView }) => {
               <div className="flex items-center gap-2 text-sm">
                 <Users className="w-4 h-4 text-blue-400" />
                 <span>Active in Tech Communities</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <Users className="w-4 h-4 text-blue-400" />
+                <span>Currently Senior memeber of Tech Council.</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <Users className="w-4 h-4 text-blue-400" />
+                <span>Currently Web Master in Professional Development Council.</span>
               </div>
             </div>
           </div>
