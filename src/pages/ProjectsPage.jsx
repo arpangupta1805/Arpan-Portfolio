@@ -7,7 +7,6 @@ import {
   FaExternalLinkAlt, 
   FaGithub, 
   FaSearch,
-  FaStar,
   FaCode,
   FaCalendar,
   FaEye,
@@ -259,17 +258,9 @@ const ProjectsPage = ({ isDarkMode }) => {
                         </motion.a>
                       )}
                     </div>
-                    <div className="text-white text-right">
-                      <FaStar className="text-yellow-400" />
-                    </div>
                   </motion.div>
 
-                  {/* Featured Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-blue-500 text-white text-xs font-medium rounded-full">
-                      Featured
-                    </span>
-                  </div>
+                  
                 </div>
 
                 {/* Project Content */}

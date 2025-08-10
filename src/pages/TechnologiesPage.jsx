@@ -8,9 +8,8 @@ const TechnologiesPage = ({ isDarkMode }) => {
   return (
     <div className="min-h-screen pt-20">
       {/* Header Section */}
-      <div className="container-custom py-8">
+      <div className="container-custom">
         <motion.div
-          className="mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -24,10 +23,7 @@ const TechnologiesPage = ({ isDarkMode }) => {
           </Link>
           
           <div className="text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">
-              My <span className="gradient-text">Technologies</span>
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-4xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               A comprehensive overview of the tools and technologies I work with
             </p>
           </div>

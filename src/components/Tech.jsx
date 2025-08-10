@@ -4,10 +4,7 @@ import {
   Code, 
   Database, 
   Globe, 
-  Settings, 
-  Zap,
-  Star,
-  Award
+  Settings
 } from "lucide-react";
 import { SiNextdotjs, SiTypescript, SiVite } from "react-icons/si";
 import { 
@@ -161,12 +158,6 @@ const Tech = ({ isDarkMode }) => {
     }
   ];
 
-  const stats = [
-    { number: "15+", label: "Technologies", icon: Code },
-    { number: "50+", label: "Projects Built", icon: Zap },
-    { number: "2+", label: "Years Learning", icon: Star },
-    { number: "100%", label: "Passion", icon: Award },
-  ];
 
   return (
     <section 
@@ -182,7 +173,7 @@ const Tech = ({ isDarkMode }) => {
 
       <div className="container-custom relative">
         {/* Section Header */}
-        <motion.div
+        {/* <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -194,9 +185,9 @@ const Tech = ({ isDarkMode }) => {
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             The tools and technologies I use to bring ideas to life
           </p>
-        </motion.div>
+        </motion.div> */}
 
-        {/* Stats Grid */}
+        {/* Stats Grid
         <motion.div
           className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -220,7 +211,7 @@ const Tech = ({ isDarkMode }) => {
               </p>
             </motion.div>
           ))}
-        </motion.div>
+        </motion.div> */}
 
         {/* Technology Categories */}
         <div className="space-y-16">

@@ -57,34 +57,13 @@ const TimelineExperienceCard = ({ experience, index, isInView }) => {
       {/* Timeline connector */}
       <div className="hidden lg:block absolute left-1/2 top-20 bottom-0 w-0.5 bg-gradient-to-b from-blue-500/50 to-transparent transform -translate-x-1/2" />
       
-      {/* Timeline dot */}
-      <motion.div
-        className="hidden lg:block absolute left-1/2 top-16 w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full z-10 transform -translate-x-1/2 shadow-lg"
-        initial={{ scale: 0, rotate: -180 }}
-        animate={isInView ? { scale: 1, rotate: 0 } : {}}
-        transition={{ 
-          duration: 0.6, 
-          delay: index * 0.2 + 0.3,
-          type: "spring",
-          stiffness: 200 
-        }}
-      >
-        <div className="w-full h-full bg-white dark:bg-gray-900 rounded-full flex items-center justify-center scale-75 shadow-inner">
-          <Briefcase className="w-4 h-4 text-blue-500" />
-        </div>
-        {/* Pulse animation */}
-        <div className="absolute inset-0 rounded-full bg-blue-500/30 animate-ping" />
-      </motion.div>
+      
 
       {/* Card content */}
-      <div className={`lg:w-5/12 ${isEven ? 'lg:ml-0 lg:pr-16' : 'lg:ml-auto lg:pl-16'}`}>
+      <div className={`lg:w-6/12 ${isEven ? 'lg:ml-0 lg:pr-8' : 'lg:ml-auto lg:pl-8'}`}>
         <motion.div
-          className="glass-card p-8 rounded-2xl hover:shadow-2xl transition-all duration-500 border border-white/10"
-          whileHover={{ 
-            scale: 1.02, 
-            y: -5,
-            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
-          }}
+          className="glass-card p-6 rounded-2xl w-[42vw] border border-white/10"
+          
         >
           {/* Header section */}
           <div className="flex items-start justify-between mb-6">
@@ -93,9 +72,9 @@ const TimelineExperienceCard = ({ experience, index, isInView }) => {
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg">
                   <Building2 className="w-8 h-8 text-white" />
                 </div>
-                <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                {/* <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
                   <CheckCircle className="w-4 h-4 text-white" />
-                </div>
+                </div> */}
               </div>
               
               <div>
@@ -216,45 +195,7 @@ const TimelineExperienceCard = ({ experience, index, isInView }) => {
   );
 };
 
-// Experience stats component
-const ExperienceStats = ({ isInView }) => {
-  const stats = [
-    { number: EXPERIENCES.length, label: "Total Projects", icon: Briefcase, suffix: "" },
-    { number: "15+", label: "Technologies", icon: Code, suffix: "" },
-    { number: "100+", label: "Contributions", icon: GitBranch, suffix: "" },
-    { number: "2+", label: "Years Active", icon: Calendar, suffix: "" },
-  ];
 
-  return (
-    <motion.div
-      className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: 0.4 }}
-    >
-      {stats.map((stat, index) => (
-        <motion.div
-          key={index}
-          className="glass-card p-6 rounded-2xl text-center group hover:scale-105 transition-all duration-300 border border-white/10"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.6 + index * 0.1, duration: 0.6 }}
-          whileHover={{ y: -5 }}
-        >
-          <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <stat.icon className="w-6 h-6 text-white" />
-          </div>
-          <div className="text-3xl font-bold gradient-text mb-2">
-            {stat.number}{stat.suffix}
-          </div>
-          <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">
-            {stat.label}
-          </p>
-        </motion.div>
-      ))}
-    </motion.div>
-  );
-};
 
 const ExperiencePage = ({ isDarkMode }) => {
   const ref = useRef();
@@ -299,9 +240,6 @@ const ExperiencePage = ({ isDarkMode }) => {
           </div>
         </motion.div>
 
-        {/* Experience Stats */}
-        <ExperienceStats isInView={isInView} />
-
         {/* Timeline */}
         <div className="relative">
           {/* Main timeline line */}
@@ -319,19 +257,7 @@ const ExperiencePage = ({ isDarkMode }) => {
             ))}
           </div>
 
-          {/* Timeline end marker */}
-          <motion.div
-            className="hidden lg:flex absolute left-1/2 -bottom-4 w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transform -translate-x-1/2 items-center justify-center shadow-lg"
-            initial={{ scale: 0, rotate: -180 }}
-            animate={isInView ? { scale: 1, rotate: 0 } : {}}
-            transition={{ 
-              duration: 0.8, 
-              delay: EXPERIENCES.length * 0.2 + 1,
-              type: "spring" 
-            }}
-          >
-            <Globe className="w-6 h-6 text-white" />
-          </motion.div>
+          
         </div>
 
         {/* Call to action */}
