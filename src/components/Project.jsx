@@ -6,7 +6,6 @@ import {
   Github, 
   Play, 
   Code, 
-  Sparkles, 
   ArrowRight,
   Eye,
   Star,
@@ -115,23 +114,8 @@ const ProjectCard = ({ project, index, isInView }) => {
             )}
           </AnimatePresence>
 
-          {/* Status Badge */}
-          <div className="absolute top-4 left-4">
-            <div className="flex items-center gap-2 px-3 py-1 bg-green-500/90 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-              <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
-              <span>Live</span>
-            </div>
-          </div>
 
-          {/* Featured Badge */}
-          {index < 3 && (
-            <div className="absolute top-4 right-4">
-              <div className="flex items-center gap-1 px-2 py-1 bg-yellow-500/90 backdrop-blur-sm rounded-full text-white text-xs font-medium">
-                <Star className="w-3 h-3" />
-                <span>Featured</span>
-              </div>
-            </div>
-          )}
+          
         </div>
 
         {/* Project Content */}
@@ -289,11 +273,7 @@ const Project = ({ showTopThree = false, isDarkMode }) => {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.6, duration: 0.4 }}
             >
-              <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
-              <span className="text-sm text-gray-500 dark:text-gray-400">
-                {projectsToShow.length} {showTopThree ? 'Featured' : 'Total'} Projects
-              </span>
-              <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
+
             </motion.div>
           </div>
         </motion.div>
@@ -330,7 +310,7 @@ const Project = ({ showTopThree = false, isDarkMode }) => {
               <span>{BUTTON_LABELS.viewAllProjects}</span>
               <div className="flex items-center gap-1">
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                <Sparkles className="w-4 h-4 group-hover:animate-spin" />
+                
               </div>
             </Link>
           </motion.div>

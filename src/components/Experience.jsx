@@ -51,12 +51,8 @@ const ExperienceCard = ({ experience, index, isInView }) => {
     ? experience.company.split(' - ')
     : [experience.company, ''];
 
-  const achievements = [
-    "Integrated Side Panel Switching Bot",
-    "Audio input/output support with multiple languages",
-    "Image support for contextual questions",
-    "Image resizer tool for government requirements"
-  ];
+  // Use dynamic key contributions from the experience data
+  const achievements = experience.keycontributions || [];
 
   return (
     <motion.div
@@ -123,26 +119,28 @@ const ExperienceCard = ({ experience, index, isInView }) => {
           </p>
 
           {/* Key Achievements */}
-          <div className="space-y-3">
-            <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
-              <Trophy className="w-4 h-4 text-yellow-500" />
-              Key Contributions
-            </h4>
-            <ul className="space-y-2">
-              {achievements.map((achievement, achievementIndex) => (
-                <motion.li
-                  key={achievementIndex}
-                  className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: index * 0.2 + 0.5 + achievementIndex * 0.1, duration: 0.4 }}
-                >
-                  <Star className="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" />
-                  <span>{achievement}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
+          {achievements && achievements.length > 0 && (
+            <div className="space-y-3">
+              <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                <Trophy className="w-4 h-4 text-yellow-500" />
+                Key Contributions
+              </h4>
+              <ul className="space-y-2">
+                {achievements.map((achievement, achievementIndex) => (
+                  <motion.li
+                    key={achievementIndex}
+                    className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: index * 0.2 + 0.5 + achievementIndex * 0.1, duration: 0.4 }}
+                  >
+                    <Star className="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" />
+                    <span>{achievement}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         {/* Technologies */}
@@ -181,14 +179,20 @@ const ExperienceCard = ({ experience, index, isInView }) => {
               </div>
             </div>
             
-            <motion.button
-              className="flex items-center gap-2 text-blue-500 hover:text-blue-600 font-medium transition-colors text-sm"
-              whileHover={{ x: 5 }}
-              transition={{ duration: 0.2 }}
-            >
-              <span>View Project</span>
-              <ExternalLink className="w-4 h-4" />
-            </motion.button>
+            {/* Show View Project button only if link exists */}
+            {experience.link && experience.link.trim() !== "" && (
+              <motion.a
+                href={experience.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-blue-500 hover:text-blue-600 font-medium transition-colors text-sm"
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <span>View Project</span>
+                <ExternalLink className="w-4 h-4" />
+              </motion.a>
+            )}
           </div>
         </div>
       </div>
@@ -196,42 +200,7 @@ const ExperienceCard = ({ experience, index, isInView }) => {
   );
 };
 
-// Stats Component
-const ExperienceStats = ({ isInView }) => {
-  const stats = [
-    { number: "1+", label: "Years Contributing", icon: Calendar },
-    { number: "5+", label: "Projects Contributed", icon: Code },
-    { number: "15+", label: "Technologies Used", icon: Zap },
-    { number: "100+", label: "Commits Made", icon: GitBranch },
-  ];
 
-  return (
-    <motion.div
-      className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: 0.6, duration: 0.8 }}
-    >
-      {stats.map((stat, index) => (
-        <motion.div
-          key={index}
-          className="glass-card p-6 rounded-xl text-center group hover:scale-105 transition-transform duration-300"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
-        >
-          <stat.icon className="w-8 h-8 mx-auto mb-3 text-blue-500 group-hover:animate-bounce" />
-          <div className="text-2xl lg:text-3xl font-bold gradient-text mb-1">
-            {stat.number}
-          </div>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            {stat.label}
-          </p>
-        </motion.div>
-      ))}
-    </motion.div>
-  );
-};
 
 // Main Experience Component
 const Experience = ({ isDarkMode }) => {
@@ -284,7 +253,7 @@ const Experience = ({ isDarkMode }) => {
             Contributing to open source and building impactful solutions
           </motion.p>
           
-          {/* Decorative Elements */}
+          {/* Decorative Elements
           <div className="flex justify-center mt-6">
             <motion.div
               className="flex items-center gap-2"
@@ -298,11 +267,9 @@ const Experience = ({ isDarkMode }) => {
               </span>
               <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
             </motion.div>
-          </div>
+          </div> */}
         </motion.div>
 
-        {/* Experience Stats */}
-        <ExperienceStats isInView={isInView} />
 
         {/* Experience Timeline */}
         <div className="relative">

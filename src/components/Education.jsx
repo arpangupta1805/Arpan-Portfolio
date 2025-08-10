@@ -51,15 +51,15 @@ const EducationCard = ({ education, index, isInView }) => {
       className="group relative"
     >
       {/* Timeline Line */}
-      <div className="absolute left-8 top-20 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-purple-500 opacity-30 group-hover:opacity-100 transition-opacity duration-300" />
+      {/* <div className="absolute left-8 top-20 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-purple-500 opacity-30 group-hover:opacity-100 transition-opacity duration-300" /> */}
       
       {/* Timeline Dot */}
-      <motion.div
+      {/* <motion.div
         className="absolute left-6 top-16 w-5 h-5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full z-10 group-hover:scale-125 transition-transform duration-300"
         variants={iconVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-      />
+      /> */}
 
       <div className="glass-card ml-16 p-8 rounded-2xl hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-1">
         {/* Institution Header */}
@@ -76,9 +76,6 @@ const EducationCard = ({ education, index, isInView }) => {
               >
                 {education.title}
               </motion.h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
-                Premier Engineering Institute
-              </p>
             </div>
           </div>
           
@@ -122,16 +119,8 @@ const EducationCard = ({ education, index, isInView }) => {
                 <span>Computer Science & Engineering</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
-                <TrendingUp className="w-4 h-4 text-green-400" />
-                <span>Full Stack Development Focus</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
                 <Users className="w-4 h-4 text-blue-400" />
                 <span>Active in Tech Communities</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <BookOpen className="w-4 h-4 text-purple-400" />
-                <span>Current Student (2024-2028)</span>
               </div>
             </div>
           </div>
@@ -147,8 +136,7 @@ const EducationCard = ({ education, index, isInView }) => {
                 "Algorithms", 
                 "Web Development", 
                 "Software Engineering",
-                "Database Systems",
-                "Computer Networks"
+                "Machine Learning",
               ].map((skill, skillIndex) => (
                 <motion.span
                   key={skillIndex}
@@ -196,7 +184,7 @@ const Education = ({ isDarkMode }) => {
 
   // Stats for education section
   const stats = [
-    { number: "2024-2028", label: "Study Period", icon: Calendar },
+    { number: "2024-present", label: "Study Period", icon: Calendar },
     { number: "B.Tech", label: "Degree Level", icon: GraduationCap },
     { number: "CSE", label: "Major Field", icon: BookOpen },
     { number: "IIT", label: "Institution Type", icon: Award },
@@ -290,7 +278,7 @@ const Education = ({ isDarkMode }) => {
           ))}
         </motion.div>
 
-        {/* Future Goals */}
+        {/* Future Goals
         <motion.div
           className="mt-16 text-center"
           initial={{ opacity: 0, y: 30 }}
@@ -304,7 +292,7 @@ const Education = ({ isDarkMode }) => {
             </span>
             <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

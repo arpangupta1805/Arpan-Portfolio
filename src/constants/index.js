@@ -11,16 +11,52 @@ import Portfolio_image from "../assets/projects/Portfolio_image.png";
 import ProfilePhoto from "../assets/images/Proffesional_profile_photo.jpg";
 import HeroBackground from "../assets/images/Hero.jpg";
 
-export const HERO_CONTENT = `I am a passionate full stack developer with a knack for crafting robust and scalable web applications. I have honed my skills in front-end technologies like React and Next.js, as well as back-end technologies like Node.js, MySQL, and MongoDB. My goal is to leverage my expertise to create innovative solutions that drive business growth and deliver exceptional user experiences.`;
-export const ABOUT_TEXT = `I am a dedicated and versatile full stack developer with a passion for creating efficient and user-friendly web applications. With 1 year of experience, I have worked with a variety of technologies, including React, Next.js, Node.js, MySQL, and MongoDB. My journey in web development began with a deep curiosity for how things work, and it has evolved into a career where I continuously strive to learn and adapt to new challenges. I thrive in collaborative environments and enjoy solving complex problems to deliver high-quality solutions. Outside of coding, I enjoy staying active, exploring new technologies, and contributing to open-source projects.`;
+export const HERO_CONTENT = `I am a passionate and versatile developer with experience in building robust and scalable web applications using technologies like React, Next.js, Node.js, MySQL, and MongoDB. Having completed multiple web development projects, I am now expanding my expertise into machine learning and software development, aiming to create innovative, impactful, and future-ready solutions.`;
+export const ABOUT_TEXT = `I am a dedicated full stack developer with a strong foundation in creating efficient and user-friendly web applications. Over the past year, I have worked on numerous projects involving React, Next.js, Node.js, MySQL, and MongoDB. Currently, I am broadening my skill set by exploring machine learning and software development, with the goal of integrating intelligent systems into practical, high-quality solutions. I thrive in collaborative environments, enjoy tackling complex challenges, and am committed to continuous learning. Beyond coding, I stay active, explore emerging technologies, and contribute to open-source projects.`;
+
 
 export const EXPERIENCES = [
+  {
+    year: "2025-2025",
+    role: "Full Stack Engineer",
+    company: "Open Source Contributer - Metis IIT Gandhinagar",
+    description: `Contributed for the development of various features and improvements in the Blog website project, focusing on enhancing user experience and performance. Integrated a User profile with the user icon, enabled the editing profile feature, implemented the fuzzy search functionality in main page, implemented the proper structure for the create blog and giving a support of the markdown in the blog body with preview button to see the preview of the blog before publishing it, and also provided a security feature that only IITGN students can write the blog.`,
+    technologies: ["HTML", "CSS", "JS"],
+    link: "https://github.com/Metis-IITGandhinagar/InsIIT-Blogs",
+    keycontributions: [
+      "Implemented user profile feature",
+      "Enabled editing profile functionality",
+      "Integrated fuzzy search in main page",
+      "Structured create blog feature",
+      "Supported markdown feature in blog body with preview functionality",
+      "Ensured security for IITGN students"]
+  },
+  {
+    year: "2025-2025",
+    role: "Full Stack Engineer",
+    company: "Open Source Contributer - Meta IIT Gandhinagar",
+    description: "Improved the complete UI of the page for the dull boring to the need and accordence of the web page structured the complete page in a proper manner by adding a proper linking of the webpages across enhancing user experience.",
+    technologies: ["Mkdocs yml", "Markdown file"], 
+    link: "https://github.com/OpenSource-IITGn/metaiitgn/",
+    keycontributions: [
+      "Redesigned the UI for improved user engagement",
+      "Streamlined navigation for better accessibility",
+      "Enhanced content organization with clear structure"
+    ]
+  },
   {
     year: "2025 - 2025",
     role: "Frontend Engineer",
     company: "Open Source Contributer - Zen Citizen",
     description: `Integrated the Side Pannel Switching Bot, Audio input/output support with almost evry language using google voice recognition and gTTS, Image support for asking questions according to the image, Image resizer tool which resizes the image according to the government photo requirements.`,
     technologies: ["Reactjs", "Web Speech Api", "Open Ai APis", "axios", "browser-image-compression"],
+    link: "https://github.com/zen-citizen/kaveribot",
+    keycontributions: [
+      "Implemented side panel switching bot",
+      "Integrated audio input/output support",
+      "Developed image support for question answering",
+      "Created image resizer tool for government photo requirements"
+    ]
   }
 ];
 
@@ -28,7 +64,7 @@ export const EDUCATIONS = [
   {
     title: "Indian Institute of Technology, Gandhinagar",
     subtitle: "B.Tech in Computer Science and Engineering",
-    year: "2024 - 2028",
+    year: "2024 - present",
     link: "https://www.iitgn.ac.in/"
   }
 ]
@@ -119,6 +155,8 @@ export const EXTERNAL_LINKS = {
 export const NAV_ITEMS = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
+  { to: "/experience", label: "Experience" },
+  { to: "/technologies", label: "Technologies" },
   { to: "/projects", label: "Projects" },
   { to: "/resume", label: "Resume" }
 ];
@@ -133,8 +171,8 @@ export const THEME_CONFIG = {
 // Personal Info - Used across components for consistent personal details
 export const PERSONAL_INFO = {
   name: "Arpan Gupta",
-  title: "Full Stack Developer", 
-  fullTitle: "Full Stack Developer & Tech Enthusiast",
+  title: "Developer & Tech Enthusiast", 
+  fullTitle: "Developer & Tech Enthusiast",
   initials: "AG",
   tagline: "Building digital experiences that matter",
   currentRole: "Student at IIT Gandhinagar",
@@ -149,6 +187,16 @@ export const PAGE_CONTENT = {
   about: {
     title: "About Me",
     description: "Get to know the person behind the code",
+    backButtonText: "Back to Home"
+  },
+  experience: {
+    title: "Professional Experience",
+    description: "My journey in open source contributions and software development",
+    backButtonText: "Back to Home"
+  },
+  technologies: {
+    title: "Technologies & Skills",
+    description: "A comprehensive overview of my technical expertise",
     backButtonText: "Back to Home"
   },
   projects: {

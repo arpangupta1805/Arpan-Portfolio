@@ -17,7 +17,7 @@ const Footer = ({ isDarkMode }) => {
     window.open(SOCIAL_LINKS.github);
   };
 
-  const currentYear = new Date().getFullYear();
+  // const currentYear = new Date().getFullYear();
 
   const quickLinks = FOOTER_LINKS.map(link => ({
     name: link.name,
@@ -76,8 +76,8 @@ const Footer = ({ isDarkMode }) => {
         ))}
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div className="relative z-10 container mx-auto py-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ">
           {/* Brand Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -142,7 +142,6 @@ const Footer = ({ isDarkMode }) => {
                 <motion.button
                   key={index}
                   onClick={social.handler}
-                  whileHover={{ scale: 1.2, rotate: 360 }}
                   whileTap={{ scale: 0.9 }}
                   className={`p-3 rounded-full transition-all duration-300 ${
                     isDarkMode 
@@ -154,45 +153,10 @@ const Footer = ({ isDarkMode }) => {
                 </motion.button>
               ))}
             </div>
-            <p className={`text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-              Let's build something amazing together
-            </p>
           </motion.div>
         </div>
 
-        {/* Bottom Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className={`pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center ${
-            isDarkMode ? 'text-gray-400' : 'text-gray-600'
-          }`}
-        >
-          <p className="text-sm flex items-center mb-4 md:mb-0">
-            © {currentYear} {PERSONAL_INFO.name}. Made with 
-            <motion.span
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1, repeat: Infinity }}
-              className="mx-2"
-            >
-              <FaHeart className="text-red-500" />
-            </motion.span>
-            and lots of ☕
-          </p>
-          
-          <motion.div
-            className="flex items-center gap-2 text-xs"
-            whileHover={{ scale: 1.05 }}
-          >
-            <span>Crafted with modern web technologies</span>
-            <div className="flex space-x-1">
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse delay-100"></div>
-              <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse delay-200"></div>
-            </div>
-          </motion.div>
-        </motion.div>
+        
       </div>
     </footer>
   );

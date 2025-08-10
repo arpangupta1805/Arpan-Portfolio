@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Instagram, 
@@ -86,13 +86,9 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <NavLink to="/" className="flex items-center space-x-3 group">
+              <Link to="/" className="flex items-center space-x-3 group">
                 <div className="relative">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center relative overflow-hidden group-hover:shadow-lg transition-all duration-300">
-                    <Code2 className="w-6 h-6 text-white relative z-10" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                  <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-yellow-400 animate-pulse" />
+                  
                 </div>
                 <div className="hidden sm:block">
                   <div className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -102,7 +98,7 @@ const Navbar = ({ toggleTheme, isDarkMode }) => {
                     {PERSONAL_INFO.title}
                   </div>
                 </div>
-              </NavLink>
+              </Link>
             </motion.div>
 
             {/* Desktop Navigation */}

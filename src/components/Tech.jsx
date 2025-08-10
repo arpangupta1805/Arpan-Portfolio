@@ -30,14 +30,14 @@ import {
   FramerMotionIcon 
 } from "./TechIcons";
 
-// Tech Category Component
+// Simplified Tech Category Component
 const TechCategory = ({ title, icon: Icon, technologies, delay, color }) => {
   const [hoveredTech, setHoveredTech] = useState(null);
 
   return (
     <motion.div
       className="space-y-6"
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.6 }}
       viewport={{ once: true }}
@@ -56,17 +56,17 @@ const TechCategory = ({ title, icon: Icon, technologies, delay, color }) => {
           <motion.div
             key={tech.name}
             className="group relative"
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: delay + index * 0.1, duration: 0.4 }}
+            transition={{ delay: delay + index * 0.05, duration: 0.4 }}
             viewport={{ once: true }}
             onMouseEnter={() => setHoveredTech(tech.name)}
             onMouseLeave={() => setHoveredTech(null)}
           >
-            <div className="glass-card p-4 rounded-xl text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
+            <div className="glass-card p-4 rounded-xl text-center hover:shadow-lg transition-all duration-300">
               <div className="flex justify-center mb-3">
                 <tech.icon 
-                  className={`w-8 h-8 ${tech.color} group-hover:scale-110 transition-transform duration-300`}
+                  className={`w-8 h-8 ${tech.color} transition-transform duration-300`}
                 />
               </div>
               <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -80,7 +80,7 @@ const TechCategory = ({ title, icon: Icon, technologies, delay, color }) => {
                     className={`h-1 rounded-full bg-gradient-to-r ${tech.gradient || 'from-blue-500 to-purple-500'}`}
                     initial={{ width: 0 }}
                     whileInView={{ width: `${tech.level}%` }}
-                    transition={{ delay: delay + index * 0.1 + 0.5, duration: 1 }}
+                    transition={{ delay: delay + index * 0.05 + 0.3, duration: 0.8 }}
                     viewport={{ once: true }}
                   />
                 </div>
@@ -91,57 +91,16 @@ const TechCategory = ({ title, icon: Icon, technologies, delay, color }) => {
 
               {/* Hover Tooltip */}
               {hoveredTech === tech.name && (
-                <motion.div
-                  className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black text-white px-3 py-1 rounded-lg text-xs whitespace-nowrap z-10"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                >
+                <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black text-white px-3 py-1 rounded-lg text-xs whitespace-nowrap z-10">
                   {tech.experience}
                   <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-black" />
-                </motion.div>
+                </div>
               )}
             </div>
           </motion.div>
         ))}
       </div>
     </motion.div>
-  );
-};
-
-// Floating Tech Icons Background
-const FloatingTechIcons = () => {
-  const icons = [
-    { Icon: ReactIcon, position: "top-20 left-10", color: "text-blue-400" },
-    { Icon: JavaScriptIcon, position: "top-40 right-20", color: "text-yellow-400" },
-    { Icon: NodeIcon, position: "bottom-32 left-20", color: "text-green-400" },
-    { Icon: MongoIcon, position: "bottom-20 right-16", color: "text-green-600" },
-    { Icon: GitIcon, position: "top-60 left-1/2", color: "text-orange-500" },
-    { Icon: PythonIcon, position: "bottom-40 right-1/3", color: "text-blue-500" },
-  ];
-
-  return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      {icons.map(({ Icon, position, color }, index) => (
-        <motion.div
-          key={index}
-          className={`absolute ${position} ${color} opacity-10`}
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 5, -5, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 6 + index,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: index * 0.5,
-          }}
-        >
-          <Icon className="w-12 h-12" />
-        </motion.div>
-      ))}
-    </div>
   );
 };
 
@@ -212,14 +171,13 @@ const Tech = ({ isDarkMode }) => {
   return (
     <section 
       id="technologies" 
-      className="section relative overflow-hidden"
+      className="section relative"
       ref={ref}
     >
-      {/* Background Elements */}
-      <FloatingTechIcons />
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '-2s' }} />
+      {/* Simplified Background Elements */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl" />
       </div>
 
       <div className="container-custom relative">
@@ -228,24 +186,14 @@ const Tech = ({ isDarkMode }) => {
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
         >
-          <motion.h2 
-            className="text-4xl lg:text-5xl font-bold mb-4"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
             Technologies <span className="gradient-text">&</span> Skills
-          </motion.h2>
-          <motion.p
-            className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             The tools and technologies I use to bring ideas to life
-          </motion.p>
+          </p>
         </motion.div>
 
         {/* Stats Grid */}
@@ -253,17 +201,17 @@ const Tech = ({ isDarkMode }) => {
           className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.6, duration: 0.8 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
         >
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              className="glass-card p-6 rounded-xl text-center group hover:scale-105 transition-transform duration-300"
-              initial={{ opacity: 0, scale: 0.8 }}
+              className="glass-card p-6 rounded-xl text-center hover:shadow-lg transition-all duration-300"
+              initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
+              transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
             >
-              <stat.icon className="w-8 h-8 mx-auto mb-3 text-blue-500 group-hover:animate-bounce" />
+              <stat.icon className="w-8 h-8 mx-auto mb-3 text-blue-500" />
               <div className="text-2xl lg:text-3xl font-bold gradient-text mb-1">
                 {stat.number}
               </div>
@@ -282,7 +230,7 @@ const Tech = ({ isDarkMode }) => {
               title={category.title}
               icon={category.icon}
               technologies={category.technologies}
-              delay={index * 0.2}
+              delay={index * 0.1}
               color={category.color}
             />
           ))}
@@ -293,7 +241,7 @@ const Tech = ({ isDarkMode }) => {
           className="mt-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 1.5, duration: 0.6 }}
+          transition={{ delay: 1, duration: 0.6 }}
         >
           <div className="glass-card inline-flex items-center gap-3 px-6 py-4 rounded-xl">
             <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
