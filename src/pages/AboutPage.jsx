@@ -30,12 +30,6 @@ import {
 
 const AboutPage = ({ isDarkMode }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const [stats, setStats] = useState({ 
-    projects: 0, 
-    experience: 0, 
-    technologies: 0 
-  });
 
   // Social media handlers - using constants
   const handleInstagram = () => {
@@ -50,36 +44,6 @@ const AboutPage = ({ isDarkMode }) => {
     window.open(SOCIAL_LINKS.github);
   };
 
-  // Animated counter effect using constants
-  useEffect(() => {
-    if (isInView) {
-      const counters = [
-        { key: 'projects', target: ABOUT_STATS.projects, duration: ANIMATION_CONFIG.counterDurations.projects },
-        { key: 'experience', target: ABOUT_STATS.experience, duration: ANIMATION_CONFIG.counterDurations.experience },
-        { key: 'technologies', target: ABOUT_STATS.technologies, duration: ANIMATION_CONFIG.counterDurations.technologies },
-      ];
-
-      counters.forEach(({ key, target, duration }) => {
-        let current = 0;
-        const increment = target / (duration / ANIMATION_CONFIG.counterUpdateInterval);
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
-          setStats(prev => ({ ...prev, [key]: Math.floor(current) }));
-        }, ANIMATION_CONFIG.counterUpdateInterval);
-      });
-    }
-  }, [isInView]);
-
-  // Quick stats configuration using real data from constants
-  const quickStats = [
-    { icon: FaCode, label: 'Projects Built', value: stats.projects, suffix: '+' },
-    { icon: FaGraduationCap, label: 'Years Experience', value: stats.experience, suffix: '+' },
-    { icon: FaLaptopCode, label: 'Technologies', value: stats.technologies, suffix: '+' },
-  ];
 
   // Social links configuration using constants
   const socialLinks = [
@@ -140,7 +104,7 @@ const AboutPage = ({ isDarkMode }) => {
                       <div className="absolute inset-0 bg-gradient-to-t from-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
                     {/* Floating elements */}
-                    <motion.div
+                    {/* <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                       className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500 rounded-full opacity-20"
@@ -149,7 +113,7 @@ const AboutPage = ({ isDarkMode }) => {
                       animate={{ rotate: -360 }}
                       transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
                       className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-500 rounded-full opacity-20"
-                    />
+                    /> */}
                   </motion.div>
                 </div>
                 
@@ -193,16 +157,16 @@ const AboutPage = ({ isDarkMode }) => {
 
                   {/* Quick Actions */}
                   <div className="flex flex-wrap gap-3">
-                    <motion.button
+                    {/* <motion.button
                       whileHover={{ scale: 1.05 }}
                       className="btn btn-primary text-sm"
                     >
                       <FaDownload className="mr-2" />
                       {BUTTON_LABELS.downloadCV}
-                    </motion.button>
+                    </motion.button> */}
                     <motion.button
                       whileHover={{ scale: 1.05 }}
-                      className="btn btn-secondary text-sm"
+                      className="btn btn-secondary text-sm flex items-center"
                     >
                       <FaEye className="mr-2" />
                       {BUTTON_LABELS.viewPortfolio}
@@ -238,38 +202,6 @@ const AboutPage = ({ isDarkMode }) => {
               </motion.div>
             </div>
 
-            {/* Stats Section */}
-            <motion.div
-              ref={ref}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-4"
-            >
-              {quickStats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.1 * index }}
-                  className="card p-6 text-center group hover:scale-105 transition-all duration-300"
-                >
-                  <motion.div
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.5 }}
-                    className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-3"
-                  >
-                    <stat.icon className="text-white text-xl" />
-                  </motion.div>
-                  <div className="text-3xl font-bold gradient-text mb-1">
-                    {stat.value}{stat.suffix}
-                  </div>
-                  <div className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
           </motion.div>
 
           {/* Contact Sidebar */}
@@ -280,12 +212,12 @@ const AboutPage = ({ isDarkMode }) => {
             className="lg:col-span-1"
           >
             <div className="card p-8 sticky top-24">
-              <h3 className="text-2xl font-semibold mb-6 flex items-center gap-3">
+              {/* <h3 className="text-2xl font-semibold mb-6 flex items-center gap-3">
                 <span className="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg flex items-center justify-center">
                   <FaEnvelope className="text-white text-sm" />
                 </span>
                 Get In Touch
-              </h3>
+              </h3> */}
               
               <div className="space-y-6">
                 <motion.div
